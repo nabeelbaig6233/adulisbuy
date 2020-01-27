@@ -1,0 +1,217 @@
+.center {
+	display: block;
+	margin: 0 auto;
+	float: none;
+}
+
+.terms_text {
+	padding: 100px 0px;
+}
+
+.terms_text h3 {
+    color: #333;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+.terms_text p {
+    font-size: 17px;
+    text-transform: capitalize;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+
+.buryer_wrapper {
+	padding: 100px 0px;
+	margin: 0 auto;
+}
+
+.buryer_wrapper input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 15px;
+    text-transform: capitalize;
+    color: #000;
+    outline: none;
+    margin-bottom: 30px;
+}
+
+.buryer_wrapper input::placeholder {
+	color: #000;
+}
+
+.buryer_wrapper button {
+    background-color: #ff6000;
+    border: none;
+    font-size: 18px;
+    padding: 5px 30px;
+    border-radius: 25px;
+    margin: 0 auto;
+    float: none;
+    text-align: center;
+    display: block;
+    transition-duration: 0.5s;
+}
+
+.buryer_wrapper button:hover {
+    border-radius: 0px;
+    box-shadow: 8px 8px 0px #000;
+    color: #FFF;
+}
+
+.buryer_wrapper textarea {
+	width: 100%;
+    padding: 8px 12px;
+    font-size: 15px;
+    text-transform: capitalize;
+    color: #000;
+    outline: none;
+    margin-bottom: 30px;
+    resize: none;
+    height: 150px;
+}
+
+.buryer_wrapper textarea::placeholder {
+	color: #000;
+}
+.about-page h4 {
+    margin-top: 15px;
+}
+.about_page01 ul {
+    display: block;
+}
+.about_page01 ul li {
+    display: block;
+    line-height: 25px;
+    font-size: 15px;
+}
+.about_page01 {
+    margin-top: 70px;
+}
+.about_page02 {
+    margin-top: 60px;
+}
+.buryer_wrapper h3 {
+    color: #777;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.buryer_wrapper p {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+.buryer_wrapper h5 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+.buryer_wrapper02 {
+    margin-top: 60px;
+}
+.terms_text ul {
+    padding-left: 30px;
+}
+.terms_text ul li {
+    display: block;
+    line-height: 30px;
+    font-size: 16px;
+}
+.contact_wrapper_text h4 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+.contact_wrapper_text h5 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.contact_wrapper_text {
+    padding: 20px;
+}
+.contact_wrapper_text p {
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+p.text {
+    text-align: center;
+    font-size: 18px;
+}
+p.terms_text01 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+.terms_text button {
+    margin: 0 auto 20px;
+    padding: 7px 10px;
+    width: 160px;
+    font-size: 18px;
+    border: none;
+    background: #333;
+}
+.terms_text button a {
+    color: #FFF;
+}
+p.terms_text01 {
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ff6000;
+}
+
+.breadcrumb-contain p {
+    font-size: 17px;
+    width: 60%;
+    display: block;
+    margin: 14px auto;
+    line-height: 27px; 
+}
+
+.conting ul {
+    padding-left: 0; margin: 0 0 30px;
+}
+
+.dropdown-menu {
+    display: block;
+    visibility: hidden;
+    opacity:0;
+    transform: translateY(50px);transition:.5s ease all;
+}
+
+.dropdown-menu.show{
+    display: block;
+    visibility: visible;
+    opacity:1;
+    transform: translateY(0px);transition:.5s ease all;
+    
+}
+
+
+.pixelstrap a, .pixelstrap a:hover, .pixelstrap a:active {
+    padding-right: 20px !important;
+}
+.dropdown-menu.dropdown-megamenu {
+    position: absolute !important;
+    width: 950px;
+    left: -112px !important;
+}
+
+.cat-sub a {
+    padding: 0;
+    margin: 0;
+    font-weight: 100;
+    text-transform: capitalize;
+}
+
+.cat-sub a:hover {
+    margin: 0 !important;
+    padding: 0 !important;
+    text-transform: capitalize !important;
+    font-weight: 100;
+}
+
+.m-tb-15{
+        margin: 15px 0;
+}

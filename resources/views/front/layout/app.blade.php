@@ -28,7 +28,7 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/front/css/color1.css')}}" media="screen" id="color">
     <!-- Style css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}" media="screen" id="color">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 
 </head>
 <body class="bg-light ">

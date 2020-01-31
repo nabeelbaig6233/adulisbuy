@@ -1,4 +1,7 @@
 @extends('admin.layout.webapp')
+@section('page_css')
+    <link href="{{asset('assets/admin/select2/dist/css/select2.min.css')}}" rel="stylesheet" />
+@endsection
 @section('content')
     @php
         $action = url('admin/'.request()->segment(2).'/form/'.request()->segment(4));
@@ -47,7 +50,7 @@
                                                 <option value="">Select Language</option>
                                                 @if (!empty($language))
                                                     @foreach($language as $lang)
-                                                        <option value="{{$lang->id}}" {{(!empty($record->language_id == $lang->id)?"selected":"")}}>{{$lang->name}}</option>
+                                                        <option value="{{$lang->id}}" {{ (!empty($record->language_id)?(($record->language_id == $lang->id)?"selected":""):"")}}>{{$lang->name}}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -56,25 +59,30 @@
                                 @endif
 
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="category_id">Select Category <span class="required">*</span>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="sub_category_id">Select Sub Category <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6">
-                                        <select name="category_id" id="category_id" class="form-control @error('category_id') is-invalid @enderror" required="required">
-                                            <option value="">Select Category</option>
-                                            @if (!empty($category))
-                                                @foreach($category as $cat)
-                                                    <option value="{{$cat->id}}" {{(!empty($record->category_id == $cat->id)?"selected":"")}}>{{$cat->name}}</option>
+                                        <select name="sub_category_id[]" id="sub_category_id" multiple="multiple" class="form-control select2" style="width: 100%" required="required">
+                                            <option value="">Select Sub Category</option>
+                                            @if (!empty($sub_category))
+                                                @foreach($sub_category as $subcat)
+                                                    <option value="{{$subcat->id}}" {{(!empty($record->sid) ? (($record->sid == $subcat->id)?"selected":"") : "" )}}>{{$subcat->name}}</option>
                                                 @endforeach
                                             @endif
                                         </select>
                                     </div>
                                 </div>
-                                <input type="hidden" id="slug" name="slug" value="{{ !empty($record->slug)?$record->slug:'' }}" data-validation="required">
+                                @if ('edit' == request()->segment(4))
+                                    <input type="text" name="id" id="id" value="{{$record->id}}" hidden>
+                                @endif
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Sub Category Name <span class="required">*</span>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Attribute Name <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input id="name" class="form-control" onkeyup="mySlug()" name="name" value="{{ !empty($record->name)?$record->name:'' }}" placeholder="Sub Category Name" required="required" autofocus type="text">
+                                        <input id="name" class="form-control" name="name" value="{{ !empty($record->aname)?$record->aname:'' }}" placeholder="Attribute Name" required="required" autofocus type="text">
+                                        @error("name")
+                                        <span class="help-block" role="alert"><span class="text-danger">{{ $message }}</span></span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -95,11 +103,10 @@
 @endsection
 @section('page_js')
     <script src="{{asset('assets/admin/validator/validator.js')}}"></script>
+    <script src="{{asset('assets/admin/select2/dist/js/select2.min.js')}}"></script>
     <script>
-        // Slug
-        function mySlug() {
-            let slug = document.getElementById('name').value;
-            document.getElementById('slug').value = slug.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
-        }
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
     </script>
 @endsection

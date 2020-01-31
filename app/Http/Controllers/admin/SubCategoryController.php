@@ -43,7 +43,7 @@ class SubCategoryController extends Controller
             $record->save();
 
             if($form_choice == 'edit'){
-                return redirect('admin/'.request()->segment(2))->with('success','Updated Successfully.');
+                return redirect()->route(request()->segment(2))->with('success','Updated Successfully.');
             }
 
             else if($form_choice == 'add'|| $form_choice == 'duplicate'){

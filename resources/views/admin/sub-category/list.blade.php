@@ -49,8 +49,8 @@
                                             <tr>
                                                 <th width="10"><input type="checkbox" id="select_all">All</th>
                                                 <th>ID</th>
-                                                <th>Picture</th>
-                                                <th>Name</th>
+                                                <th>Category</th>
+                                                <th>Sub Category</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
@@ -161,7 +161,7 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
-                pageLength: 4,
+                pageLength: 10,
                 ajax: {
                     url: `{{route(request()->segment(2))}}`,
                 },

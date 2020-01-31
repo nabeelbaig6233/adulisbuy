@@ -42,6 +42,9 @@
 <!-- loader end -->
 
 <!--header start-->
+<?php
+
+?>
 <header>
     <div class="mobile-fix-option"></div>
     <div class="top-header">
@@ -66,17 +69,7 @@
                 </div>
                 <div class="col-xl-7 col-md-5 col-sm-6">
                     <div class="top-header-right">
-                        <!--     <div class="top-menu-block">
-                                <ul>
-                                    <li><a href="#">gift cards</a></li>
-                                    <li><a href="#">Notifications</a></li>
-                                    <li><a href="#">help & contact</a></li>
-                                    <li><a href="#">todays deal</a></li>
-                                    <li><a href="#">track order</a></li>
-                                    <li><a href="#">shipping </a></li>
-                                    <li><a href="#">easy returns</a></li>
-                                </ul>
-                            </div> -->
+
                         <div class="language-block">
                             <div class="language-dropdown">
                                 <span  class="language-dropdown-click">
@@ -119,33 +112,11 @@
                                             back <i class="fa fa-angle-right pl-2"></i>
                                         </div>
                                     </li>
-                                    <li><a href="#">western ware</a></li>
-                                    <li><a href="#">TV, Appliances</a></li>
-                                    <li><a href="#">Pets Products</a></li>
-                                    <li><a href="#">Car, Motorbike</a></li>
-                                    <li><a href="#">Industrial Products</a></li>
-                                    <li><a href="#">Beauty, Health Products</a></li>
-                                    <li><a href="#">Grocery Products </a></li>
-                                    <li><a href="#">Sports</a></li>
-                                    <li><a href="#">Bags, Luggage</a></li>
-                                    <li><a href="#">Movies, Music </a></li>
-                                    <li><a href="#">Video Games</a></li>
-                                    <li><a href="#">Toys, Baby Products</a></li>
-                                    <li class="mor-slide-open">
-                                        <ul>
-                                            <li><a href="#">Bags, Luggage</a></li>
-                                            <li><a href="#">Movies, Music </a></li>
-                                            <li><a href="#">Video Games</a></li>
-                                            <li><a href="#">Toys, Baby Products</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="mor-slide-click">
-                                            mor category
-                                            <i class="fa fa-angle-down pro-down" ></i>
-                                            <i class="fa fa-angle-up pro-up" ></i>
-                                        </a>
-                                    </li>
+                                    @if ($category)
+                                        @foreach ($category as $cats)
+                                            <li><a href="as">{{$cats->name}}</a></li>
+                                        @endforeach
+                                    @endif
                                 </ul>
                             </div>
                             <div class="brand-logo">
@@ -162,23 +133,13 @@
                                         <li>
                                             <div class="mobile-back text-right">Back<i class="fa fa-angle-right pl-2" aria-hidden="true"></i></div>
                                         </li>
-                                        <!--HOME-->
                                         <li>
                                             <a href="index.php">Home</a>
                                         </li>
-                                        <!--HOME-END-->
 
-                                        <!--SHOP-->
                                         <li>
                                             <a href="shop.php">shop</a>
 
-                                            <!--</li>-->
-                                            <!--SHOP-END-->
-                                            <!--product-meu start-->
-                                            <!--<li class="mega" id="hover-cls">-->
-                                            <!--    <a href="product.php">product-->
-                                            <!--</a>-->
-                                            <!--</li>-->
 
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -187,114 +148,21 @@
                                             <div class="dropdown-menu dropdown-megamenu" aria-labelledby="navbarDropdown">
                                                 <div class="container">
                                                     <div class="row">
-                                                        <div class="col-md-3 m-tb-15">
-                                                            <p>Category 1</p>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="cat-sub">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 m-tb-15">
-                                                            <p>Category 1</p>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="cat-sub">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 m-tb-15">
-                                                            <p>Category 1</p>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="cat-sub">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 m-tb-15">
-                                                            <p>Category 1</p>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="cat-sub">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <p>Category 1</p>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="cat-sub">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 m-tb-15">
-                                                            <p>Category 1</p>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="cat-sub">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 m-tb-15">
-                                                            <p>Category 1</p>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="cat-sub">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 m-tb-15">
-                                                            <p>Category 1</p>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="cat-sub">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 m-tb-15">
-                                                            <p>Category 1</p>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="cat-sub">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 m-tb-15">
-                                                            <p>Category 1</p>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="cat-sub">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 m-tb-15">
-                                                            <p>Category 1</p>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="cat-sub">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 m-tb-15">
-                                                            <p>Category 1</p>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="cat-sub">
-                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                            </div>
-                                                        </div>
+                                                        @if (!empty($category))
+                                                            @foreach($category as $cat)
+                                                                <div class="col-md-3 m-tb-15">
+                                                                    <p>{{$cat->name}}</p>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <div class="cat-sub">
+                                                                        @foreach($sub_category as $scat)
+                                                                            @if ($scat->category_id === $cat->id)
+                                                                                <a class="dropdown-item" href="#">{{$scat->name}}</a>
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -382,28 +250,11 @@
                                     </nav>
                                     <div class="collapse nav-desk" id="navbarToggleExternalContent">
                                         <ul class="nav-cat title-font">
-                                            <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/01.png" alt="catergory-product"> <a>western ware</a></li>
-                                            <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/02.png" alt="catergory-product"> <a>TV, Appliances</a></li>
-                                            <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/03.png" alt="catergory-product"> <a>Pets Products</a></li>
-                                            <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/04.png" alt="catergory-product"> <a>Car, Motorbike</a></li>
-                                            <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/05.png" alt="catergory-product"> <a>Industrial Products</a></li>
-                                            <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/06.png" alt="catergory-product"> <a>Beauty, Health Products</a></li>
-                                            <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/07.png" alt="catergory-product"> <a>Grocery Products </a></li>
-                                            <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/08.png" alt="catergory-product"> <a>Sports</a></li>
-                                            <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/09.png" alt="catergory-product"> <a>Bags, Luggage</a></li>
-                                            <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/10.png" alt="catergory-product"> <a>Movies, Music </a></li>
-                                            <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/11.png" alt="catergory-product"> <a>Video Games</a></li>
-                                            <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/08.png" alt="catergory-product"> <a>Sports</a></li>
-                                            <li class="mor-slide-open">
-                                                <ul>
-                                                    <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/08.png" alt="catergory-product"> <a>Sports</a></li>
-                                                    <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/09.png" alt="catergory-product"> <a>Bags, Luggage</a></li>
-                                                    <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/10.png" alt="catergory-product"> <a>Movies, Music </a></li>
-                                                    <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/11.png" alt="catergory-product"> <a>Video Games</a></li>
-                                                    <li> <img src="{{asset('assets/front/images/')}}/layout-1/nav-img/12.png" alt="catergory-product"> <a>Toys, Baby Products</a></li>
-                                                </ul>
-                                            </li>
-                                            <li> <a class="mor-slide-click">mor category <i class="fa fa-angle-down pro-down"></i><i class="fa fa-angle-up pro-up"></i></a></li>
+                                            @if ($category)
+                                                @foreach ($category as $cats)
+                                                    <li> <img src="{{asset($cats->image)}}" alt="{{$cats->name}}"> <a>{{$cats->name}}</a></li>
+                                                @endforeach
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>

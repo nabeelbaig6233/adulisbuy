@@ -27,8 +27,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         $setting = setting::find(1);
-        view()->share([
-            'setting' => $setting
-        ]);
+        view()->share('setting',$setting);
     }
 }

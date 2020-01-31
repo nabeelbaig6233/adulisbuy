@@ -56,7 +56,21 @@ Route::middleware(['admin'])->prefix('admin')->group(function(){
     Route::get('/attribute/view/{id}','admin\AttributeController@view');
     Route::delete('/attribute/destroy/{id}','admin\AttributeController@destroy');
     Route::post('/attribute/delete_all','admin\AttributeController@delete_all')->name('attribute.delete_all');
+
+    //    Variant
+    Route::get('/variant','admin\VariantController@index')->name('variant');
+    Route::any('/variant/form/{form}','admin\VariantController@form');
+    Route::any('/variant/form/{form}/{id}','admin\VariantController@form');
+    Route::get('/variant/view/{id}','admin\VariantController@view');
+    Route::delete('/variant/destroy/{id}','admin\VariantController@destroy');
+    Route::post('/variant/delete_all','admin\VariantController@delete_all')->name('variant.delete_all');
 });
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::middleware(['allowguest'])->group(function (){
+    Route::get('/', 'HomeController@index')->name('home');
+});
+
+Route::fallback(function(){
+    return "404 not found";
+});

@@ -49,8 +49,8 @@
                                             <tr>
                                                 <th width="10"><input type="checkbox" id="select_all">All</th>
                                                 <th>ID</th>
-                                                <th>Picture</th>
-                                                <th>Name</th>
+                                                <th>Sub Category</th>
+                                                <th>Attribute</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
@@ -84,12 +84,12 @@
                         <table class="table table-hover table-striped">
                             <tbody>
                             <tr>
-                                <th>Category</th>
-                                <td id="cname" align="center"></td>
-                            </tr>
-                            <tr>
                                 <th>Sub Category</th>
                                 <td id="sname" align="center"></td>
+                            </tr>
+                            <tr>
+                                <th>Attribute</th>
+                                <td id="aname" align="center"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -161,15 +161,15 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
-                pageLength: 4,
+                pageLength: 10,
                 ajax: {
                     url: `{{route(request()->segment(2))}}`,
                 },
                 columns: [
                     {data: 'checkbox', name: 'checkbox', orderable: false},
-                    {data: 'id', name: 'id'},
-                    {data: 'cname', name: 'cname'},
+                    {data: 'acid', name: 'acid'},
                     {data: 'sname', name: 'sname'},
+                    {data: 'aname', name: 'aname'},
                     {data: 'action', name: 'action', orderable: false}
                 ]
 
@@ -182,7 +182,8 @@
                     url:`{{url('admin/'.request()->segment(2).'/view/')}}/${id}`,
                     dataType:"json",
                     success: function (data) {
-                        $("#cname").html(data.cname);
+                        console.log(data);
+                        $("#aname").html(data.aname);
                         $("#sname").html(data.sname);
                         $("#viewModal").modal('show');
                     }

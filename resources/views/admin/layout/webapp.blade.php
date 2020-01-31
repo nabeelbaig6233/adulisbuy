@@ -64,7 +64,7 @@
                           <li><a href="{{route('category')}}">Category</a></li>
                           <li><a href="{{route('sub-category')}}">Sub Category</a></li>
                           <li><a href="{{route('attribute')}}">Attribute</a></li>
-                          <li><a href="contacts.html">Variants</a></li>
+                          <li><a href="{{route('variant')}}">Variants</a></li>
                           <li><a href="profile.html">Products</a></li>
                         </ul>
                       </li>

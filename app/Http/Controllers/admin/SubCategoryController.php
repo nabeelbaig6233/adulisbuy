@@ -5,7 +5,6 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\models\sub_category;
 use Illuminate\Http\Request;
-use File;
 
 class SubCategoryController extends Controller
 {

@@ -15,7 +15,7 @@ class CategoryController extends Controller
         if (request()->ajax()) {
             return datatables()->of(Category::latest()->get())
                 ->addColumn('image',function($data){
-                    return '<img width="65" src="'.asset(!empty($data->image)?$data->image:'public/assets/admin/images/placeholder.png').'">';
+                    return '<img width="65" src="'.asset(!empty($data->image)?$data->image:'assets/admin/images/placeholder.png').'">';
                 })
                 ->addColumn('checkbox',function($data){
                     return '<input type="checkbox" class="delete_checkbox flat" value="'.$data->id.'">';

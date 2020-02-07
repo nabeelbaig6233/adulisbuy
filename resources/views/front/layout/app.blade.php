@@ -156,7 +156,7 @@
                                                                     <div class="cat-sub">
                                                                         @foreach($sub_category as $scat)
                                                                             @if ($scat->category_id === $cat->id)
-                                                                                <a class="dropdown-item" href="#">{{$scat->name}}</a>
+                                                                                <a class="dropdown-item" href="{{route('product.index',['category'=>$cats->slug])}}">{{$scat->name}}</a>
                                                                             @endif
                                                                         @endforeach
                                                                     </div>
@@ -252,7 +252,7 @@
                                         <ul class="nav-cat title-font">
                                             @if ($category)
                                                 @foreach ($category as $cats)
-                                                    <li> <img src="{{asset($cats->image)}}" alt="{{$cats->name}}"> <a>{{$cats->name}}</a></li>
+                                                    <li> <img src="{{asset($cats->image)}}" alt="{{$cats->name}}"> <a href="{{route('product.index',['category'=>$cats->slug])}}">{{$cats->name}}</a></li>
                                                 @endforeach
                                             @endif
                                         </ul>

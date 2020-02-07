@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2020 at 03:49 AM
+-- Generation Time: Feb 07, 2020 at 05:59 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -45,7 +45,8 @@ CREATE TABLE `attribute` (
 
 INSERT INTO `attribute` (`id`, `language_id`, `name`, `status`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
 (7, 1, 'Memory', 1, '2020-01-30 20:06:48', 1, '2020-01-30 20:07:17', NULL),
-(8, 1, 'Size', 1, '2020-01-30 20:07:39', 1, '2020-01-30 20:07:39', NULL);
+(8, 1, 'Size', 1, '2020-01-30 20:07:39', 1, '2020-01-30 20:07:39', NULL),
+(9, 1, 'Color', 1, '2020-02-05 21:54:00', 1, '2020-02-05 21:54:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -83,8 +84,10 @@ INSERT INTO `attribute_sub_category` (`id`, `language_id`, `attribute_id`, `sub_
 (28, 1, 8, 24, 1, '2020-01-31 01:07:39', 1, NULL, NULL),
 (29, 1, 8, 25, 1, '2020-01-31 01:07:39', 1, NULL, NULL),
 (30, 1, 8, 26, 1, '2020-01-31 01:07:39', 1, NULL, NULL),
-(31, 1, 8, 28, 1, '2020-01-31 01:07:39', 1, NULL, NULL),
-(32, 1, 8, 29, 1, '2020-01-31 01:07:39', 1, NULL, NULL);
+(31, 1, 8, 27, 1, '2020-02-06 02:42:17', 1, '2020-02-06 02:42:17', NULL),
+(32, 1, 8, 29, 1, '2020-01-31 01:07:39', 1, NULL, NULL),
+(33, 1, 9, 14, 1, '2020-02-06 02:54:00', 1, NULL, NULL),
+(34, 1, 9, 26, 1, '2020-02-06 02:54:00', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -233,80 +236,115 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `product` (
   `id` int(10) UNSIGNED NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `sub_category_id` int(11) DEFAULT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sku` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `hover_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `multi_image` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price_reg` int(11) NOT NULL,
-  `price_dis` int(11) NOT NULL,
-  `price_customize` int(11) DEFAULT NULL,
+  `price_dis` int(11) DEFAULT NULL,
   `price_dis_start` date DEFAULT NULL,
   `price_dis_end` date DEFAULT NULL,
   `price_status` tinyint(1) NOT NULL DEFAULT '0',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `featured` tinyint(1) NOT NULL DEFAULT '0',
-  `status` tinyint(1) DEFAULT '1',
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_by` int(11) DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `slug`, `sku`, `image`, `hover_image`, `multi_image`, `price_reg`, `price_dis`, `price_customize`, `price_dis_start`, `price_dis_end`, `price_status`, `description`, `featured`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Cotton Shalwar Kameez1', 'cotton-shalwar-kameez-1', 'SK20463', NULL, NULL, '[null]', 4148, 3635, 900, NULL, NULL, 0, '<p>Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.</p>', 0, 1, '2019-10-05 21:53:03', '2019-11-19 08:44:34'),
-(2, 'Cotton Shalwar Kameez2', 'cotton-shalwar-kameez-2', 'SK23838', NULL, NULL, NULL, 4183, 2019, 900, NULL, NULL, 0, 'Lorem Ipsum 2 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(3, 'Cotton Shalwar Kameez3', 'cotton-shalwar-kameez-3', 'SK20851', NULL, NULL, NULL, 4091, 2042, 900, NULL, NULL, 0, 'Lorem Ipsum 3 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(4, 'Cotton Shalwar Kameez4', 'cotton-shalwar-kameez-4', 'SK21857', NULL, NULL, NULL, 2450, 2648, 900, NULL, NULL, 0, 'Lorem Ipsum 4 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(5, 'Cotton Shalwar Kameez5', 'cotton-shalwar-kameez-5', 'SK16781', NULL, NULL, NULL, 2588, 3459, 900, NULL, NULL, 0, 'Lorem Ipsum 5 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(6, 'Cotton Shalwar Kameez6', 'cotton-shalwar-kameez-6', 'SK19511', NULL, NULL, NULL, 2043, 2259, 900, NULL, NULL, 0, 'Lorem Ipsum 6 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(7, 'Cotton Shalwar Kameez7', 'cotton-shalwar-kameez-7', 'SK24112', NULL, NULL, NULL, 4073, 4032, 900, NULL, NULL, 0, 'Lorem Ipsum 7 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(8, 'Cotton Shalwar Kameez8', 'cotton-shalwar-kameez-8', 'SK17358', NULL, NULL, NULL, 2912, 4407, 900, NULL, NULL, 0, 'Lorem Ipsum 8 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(9, 'Cotton Shalwar Kameez9', 'cotton-shalwar-kameez-9', 'SK23548', NULL, NULL, NULL, 2905, 3447, 900, NULL, NULL, 0, 'Lorem Ipsum 9 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(10, 'Linen Kurta1', 'linen-kurta1', 'SK16058', NULL, NULL, NULL, 2376, 638, 900, NULL, NULL, 0, 'Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(11, 'Linen Kurta2', 'linen-kurta2', 'SK21402', NULL, NULL, NULL, 1872, 1649, 900, NULL, NULL, 0, 'Lorem Ipsum 2 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(12, 'Linen Kurta3', 'linen-kurta3', 'SK18478', NULL, NULL, NULL, 2954, 1946, 900, NULL, NULL, 0, 'Lorem Ipsum 3 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(13, 'Linen Kurta4', 'linen-kurta4', 'SK18362', NULL, NULL, NULL, 2225, 1835, 900, NULL, NULL, 0, 'Lorem Ipsum 4 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(14, 'Linen Kurta5', 'linen-kurta5', 'SK17978', NULL, NULL, NULL, 2782, 1480, 900, NULL, NULL, 0, 'Lorem Ipsum 5 is simply dummy text of the printing and typesetting industry.', 1, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(15, 'Linen Kurta6', 'linen-kurta6', 'SK22078', NULL, NULL, NULL, 2761, 1120, 900, NULL, NULL, 0, 'Lorem Ipsum 6 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(16, 'Linen Kurta7', 'linen-kurta7', 'SK18397', NULL, NULL, NULL, 2674, 717, 900, NULL, NULL, 0, 'Lorem Ipsum 7 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(17, 'Linen Kurta8', 'linen-kurta8', 'SK16735', NULL, NULL, NULL, 1867, 2171, 900, NULL, NULL, 0, 'Lorem Ipsum 8 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(18, 'Linen Kurta9', 'linen-kurta9', 'SK17874', NULL, NULL, NULL, 2945, 1518, 900, NULL, NULL, 0, 'Lorem Ipsum 9 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(19, 'Khaddar Shirwani1', 'khaddar-shirwani1', 'SK24211', NULL, NULL, NULL, 24322, 13675, 900, NULL, NULL, 0, 'Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(20, 'Khaddar Shirwani2', 'khaddar-shirwani2', 'SK17993', NULL, NULL, NULL, 13683, 12194, 900, NULL, NULL, 0, 'Lorem Ipsum 2 is simply dummy text of the printing and typesetting industry.', 1, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(21, 'Khaddar Shirwani3', 'khaddar-shirwani3', 'SK20765', NULL, NULL, NULL, 26445, 12254, 900, NULL, NULL, 0, 'Lorem Ipsum 3 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(22, 'Khaddar Shirwani4', 'khaddar-shirwani4', 'SK24178', NULL, NULL, NULL, 25763, 9439, 900, NULL, NULL, 0, 'Lorem Ipsum 4 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(23, 'Khaddar Shirwani5', 'khaddar-shirwani5', 'SK20076', NULL, NULL, NULL, 13398, 23083, 900, NULL, NULL, 0, 'Lorem Ipsum 5 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(24, 'Khaddar Shirwani6', 'khaddar-shirwani6', 'SK20084', NULL, NULL, NULL, 27844, 19354, 900, NULL, NULL, 0, 'Lorem Ipsum 6 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(25, 'Khaddar Shirwani7', 'khaddar-shirwani7', 'SK15362', NULL, NULL, NULL, 19362, 14648, 900, NULL, NULL, 0, 'Lorem Ipsum 7 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(26, 'Khaddar Shirwani8', 'khaddar-shirwani8', 'SK17599', NULL, NULL, NULL, 14744, 5674, 900, NULL, NULL, 0, 'Lorem Ipsum 8 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(27, 'Khaddar Shirwani9', 'khaddar-shirwani9', 'SK24744', NULL, NULL, NULL, 29536, 10974, 900, NULL, NULL, 0, 'Lorem Ipsum 9 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(28, 'Khaddar Shirts1', 'khaddar-shirts1', 'SK17013', NULL, NULL, NULL, 1014, 1199, 900, NULL, NULL, 0, 'Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.', 1, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(29, 'Khaddar Shirts2', 'khaddar-shirts2', 'SK24021', NULL, NULL, NULL, 1769, 2266, 900, NULL, NULL, 0, 'Lorem Ipsum 2 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(30, 'Khaddar Shirts3', 'khaddar-shirts3', 'SK16279', NULL, NULL, NULL, 1902, 2448, 900, NULL, NULL, 0, 'Lorem Ipsum 3 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(31, 'Khaddar Shirts4', 'khaddar-shirts4', 'SK24019', NULL, NULL, NULL, 2281, 1528, 900, NULL, NULL, 0, 'Lorem Ipsum 4 is simply dummy text of the printing and typesetting industry.', 1, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(32, 'Khaddar Shirts5', 'khaddar-shirts5', 'SK19897', NULL, NULL, NULL, 1827, 2308, 900, NULL, NULL, 0, 'Lorem Ipsum 5 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(33, 'Khaddar Shirts6', 'khaddar-shirts6', 'SK16552', NULL, NULL, NULL, 2169, 2114, 900, NULL, NULL, 0, 'Lorem Ipsum 6 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(34, 'Khaddar Shirts7', 'khaddar-shirts7', 'SK24558', NULL, NULL, NULL, 1722, 831, 900, NULL, NULL, 0, 'Lorem Ipsum 7 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(35, 'Khaddar Shirts8', 'khaddar-shirts8', 'SK17474', NULL, NULL, NULL, 1485, 573, 900, NULL, NULL, 0, 'Lorem Ipsum 8 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(36, 'Khaddar Shirts9', 'khaddar-shirts9', 'SK21966', NULL, NULL, NULL, 1212, 1175, 900, NULL, NULL, 0, 'Lorem Ipsum 9 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(37, 'Kamalia Wedding Suit1', 'kamalia-wedding-suit1', 'SK21607', NULL, NULL, NULL, 2325, 1286, 900, NULL, NULL, 0, 'Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(38, 'Kamalia Wedding Suit2', 'kamalia-wedding-suit2', 'SK16909', NULL, NULL, NULL, 1162, 2170, 900, NULL, NULL, 0, 'Lorem Ipsum 2 is simply dummy text of the printing and typesetting industry.', 1, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(39, 'Kamalia Wedding Suit3', 'kamalia-wedding-suit3', 'SK24907', NULL, NULL, NULL, 1392, 2434, 900, NULL, NULL, 0, 'Lorem Ipsum 3 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(40, 'Kamalia Wedding Suit4', 'kamalia-wedding-suit4', 'SK24223', NULL, NULL, NULL, 1466, 716, 900, NULL, NULL, 0, 'Lorem Ipsum 4 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(41, 'Kamalia Wedding Suit5', 'kamalia-wedding-suit5', 'SK21630', NULL, NULL, NULL, 1171, 1435, 900, NULL, NULL, 0, 'Lorem Ipsum 5 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(42, 'Kamalia Wedding Suit6', 'kamalia-wedding-suit6', 'SK24947', NULL, NULL, NULL, 1662, 1284, 900, NULL, NULL, 0, 'Lorem Ipsum 6 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(43, 'Kamalia Wedding Suit7', 'kamalia-wedding-suit7', 'SK20020', NULL, NULL, NULL, 1397, 1914, 900, NULL, NULL, 0, 'Lorem Ipsum 7 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(44, 'Kamalia Wedding Suit8', 'kamalia-wedding-suit8', 'SK19407', NULL, NULL, NULL, 1929, 611, 900, NULL, NULL, 0, 'Lorem Ipsum 8 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(45, 'Kamalia Wedding Suit9', 'kamalia-wedding-suit9', 'SK17851', NULL, NULL, NULL, 1991, 1405, 900, NULL, NULL, 0, 'Lorem Ipsum 9 is simply dummy text of the printing and typesetting industry.', 0, 1, '2019-10-05 21:53:03', '2019-10-05 21:53:03'),
-(46, '', '', '', NULL, NULL, NULL, 0, 0, 0, NULL, NULL, 0, '', 0, 1, NULL, NULL),
-(52, 'Cotton Shalwar Kameez122', 'cotton-shalwar-kameez122', 'SK20463dd', 'public/assets/uploads/product/1227752893.png', 'public/assets/uploads/product/1927492575.png', '[\"public\\/assets\\/uploads\\/product\\/728333090.png\",\"public\\/assets\\/uploads\\/product\\/66074973.png\"]', 4148, 3635, 900, NULL, NULL, 0, '<p>Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.</p>', 0, 1, '2019-11-18 22:24:31', '2019-11-18 22:26:57'),
-(54, 'Cotton Shalwar Kameez1223', 'cotton-shalwar-kameez1223', 'SK20463dd33', 'public/assets/uploads/product/1465308598.jpg', 'public/assets/uploads/product/1497255853.jpg', '[\"public\\/assets\\/uploads\\/product\\/1874547029.jpg\",\"public\\/assets\\/uploads\\/product\\/637560899.jpg\"]', 4148, 3635, 900, NULL, NULL, 0, '<p>Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.</p>', 0, 1, '2019-11-19 08:57:40', '2019-11-24 21:30:25'),
-(55, 'Cotton Shalwar Kameez134', 'cotton-shalwar-kameez134', 'SK2046345', 'public/assets/uploads/product/2050186051.png', 'public/assets/uploads/product/1931409195.png', '[\"public\\/assets\\/uploads\\/product\\/1732256228.jpg\"]', 4148, 3635, 900, NULL, NULL, 0, '<p>Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.</p>', 0, 1, '2019-11-19 09:07:06', '2019-11-19 09:16:22'),
-(56, 'Cotton Shalwar Kameez1345', 'cotton-shalwar-kameez1345', 'SK20463452', 'public/assets/uploads/product/2050186051.png', 'public/assets/uploads/product/1931409195.png', '[\"public\\/assets\\/uploads\\/product\\/1732256228.jpg\"]', 4148, 3635, 900, NULL, NULL, 1, '<p>Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.</p>', 1, 1, '2019-11-23 23:28:44', '2019-11-23 23:28:44');
+INSERT INTO `product` (`id`, `language_id`, `category_id`, `sub_category_id`, `name`, `slug`, `sku`, `image`, `hover_image`, `multi_image`, `description`, `price_reg`, `price_dis`, `price_dis_start`, `price_dis_end`, `price_status`, `featured`, `status`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
+(1, 0, NULL, 14, 'Cotton Shalwar Kameez1', 'cotton-shalwar-kameez-1', 'SK20463', 'assets/uploads/product/1.jpg', 'assets/uploads/product/a1.jpg', '[null]', '<p>Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.</p>', 4148, 3635, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 00:02:24', NULL),
+(2, 0, NULL, 15, 'Cotton Shalwar Kameez2', 'cotton-shalwar-kameez-2', 'SK23838', 'assets/uploads/product/2.jpg', 'assets/uploads/product/a2.jpg', NULL, 'Lorem Ipsum 2 is simply dummy text of the printing and typesetting industry.', 4183, 2019, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 00:02:30', NULL),
+(3, 0, NULL, 16, 'Cotton Shalwar Kameez3', 'cotton-shalwar-kameez-3', 'SK20851', 'assets/uploads/product/3.jpg', 'assets/uploads/product/a3.jpg', NULL, 'Lorem Ipsum 3 is simply dummy text of the printing and typesetting industry.', 4091, 2042, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 00:02:35', NULL),
+(4, 0, NULL, 17, 'Cotton Shalwar Kameez4', 'cotton-shalwar-kameez-4', 'SK21857', 'assets/uploads/product/4.jpg', 'assets/uploads/product/a4.jpg', NULL, 'Lorem Ipsum 4 is simply dummy text of the printing and typesetting industry.', 2450, 2648, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 00:02:40', NULL),
+(5, 0, NULL, 18, 'Cotton Shalwar Kameez5', 'cotton-shalwar-kameez-5', 'SK16781', 'assets/uploads/product/5.jpg', 'assets/uploads/product/a5.jpg', NULL, 'Lorem Ipsum 5 is simply dummy text of the printing and typesetting industry.', 2588, 3459, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 00:02:44', NULL),
+(6, 0, NULL, 19, 'Cotton Shalwar Kameez6', 'cotton-shalwar-kameez-6', 'SK19511', 'assets/uploads/product/6.jpg', 'assets/uploads/product/a6.jpg', NULL, 'Lorem Ipsum 6 is simply dummy text of the printing and typesetting industry.', 2043, 2259, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 00:02:49', NULL),
+(7, 0, NULL, 20, 'Cotton Shalwar Kameez7', 'cotton-shalwar-kameez-7', 'SK24112', 'assets/uploads/product/7.jpg', 'assets/uploads/product/a7.jpg', NULL, 'Lorem Ipsum 7 is simply dummy text of the printing and typesetting industry.', 4073, 4032, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 00:02:52', NULL),
+(8, 0, NULL, 21, 'Cotton Shalwar Kameez8', 'cotton-shalwar-kameez-8', 'SK17358', 'assets/uploads/product/8.jpg', 'assets/uploads/product/a8.jpg', NULL, 'Lorem Ipsum 8 is simply dummy text of the printing and typesetting industry.', 2912, 4407, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 00:02:58', NULL),
+(9, 0, NULL, 22, 'Cotton Shalwar Kameez9', 'cotton-shalwar-kameez-9', 'SK23548', NULL, NULL, NULL, 'Lorem Ipsum 9 is simply dummy text of the printing and typesetting industry.', 2905, 3447, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:19:30', NULL),
+(10, 0, NULL, 23, 'Linen Kurta1', 'linen-kurta1', 'SK16058', NULL, NULL, NULL, 'Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.', 2376, 638, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:19:32', NULL),
+(11, 0, NULL, 24, 'Linen Kurta2', 'linen-kurta2', 'SK21402', NULL, NULL, NULL, 'Lorem Ipsum 2 is simply dummy text of the printing and typesetting industry.', 1872, 1649, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:19:34', NULL),
+(12, 0, NULL, 25, 'Linen Kurta3', 'linen-kurta3', 'SK18478', NULL, NULL, NULL, 'Lorem Ipsum 3 is simply dummy text of the printing and typesetting industry.', 2954, 1946, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:19:36', NULL),
+(13, 0, NULL, 14, 'Linen Kurta4', 'linen-kurta4', 'SK18362', NULL, NULL, NULL, 'Lorem Ipsum 4 is simply dummy text of the printing and typesetting industry.', 2225, 1835, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:05', NULL),
+(14, 0, NULL, 15, 'Linen Kurta5', 'linen-kurta5', 'SK17978', NULL, NULL, NULL, 'Lorem Ipsum 5 is simply dummy text of the printing and typesetting industry.', 2782, 1480, NULL, NULL, 0, 1, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:07', NULL),
+(15, 0, NULL, 16, 'Linen Kurta6', 'linen-kurta6', 'SK22078', NULL, NULL, NULL, 'Lorem Ipsum 6 is simply dummy text of the printing and typesetting industry.', 2761, 1120, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:08', NULL),
+(16, 0, NULL, 17, 'Linen Kurta7', 'linen-kurta7', 'SK18397', NULL, NULL, NULL, 'Lorem Ipsum 7 is simply dummy text of the printing and typesetting industry.', 2674, 717, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:10', NULL),
+(17, 0, NULL, 18, 'Linen Kurta8', 'linen-kurta8', 'SK16735', NULL, NULL, NULL, 'Lorem Ipsum 8 is simply dummy text of the printing and typesetting industry.', 1867, 2171, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:12', NULL),
+(18, 0, NULL, 19, 'Linen Kurta9', 'linen-kurta9', 'SK17874', NULL, NULL, NULL, 'Lorem Ipsum 9 is simply dummy text of the printing and typesetting industry.', 2945, 1518, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:14', NULL),
+(19, 0, NULL, 20, 'Khaddar Shirwani1', 'khaddar-shirwani1', 'SK24211', NULL, NULL, NULL, 'Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.', 24322, 13675, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:16', NULL),
+(20, 0, NULL, 21, 'Khaddar Shirwani2', 'khaddar-shirwani2', 'SK17993', NULL, NULL, NULL, 'Lorem Ipsum 2 is simply dummy text of the printing and typesetting industry.', 13683, 12194, NULL, NULL, 0, 1, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:21', NULL),
+(21, 0, NULL, 22, 'Khaddar Shirwani3', 'khaddar-shirwani3', 'SK20765', NULL, NULL, NULL, 'Lorem Ipsum 3 is simply dummy text of the printing and typesetting industry.', 26445, 12254, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:22', NULL),
+(22, 0, NULL, 23, 'Khaddar Shirwani4', 'khaddar-shirwani4', 'SK24178', NULL, NULL, NULL, 'Lorem Ipsum 4 is simply dummy text of the printing and typesetting industry.', 25763, 9439, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:23', NULL),
+(23, 0, NULL, 24, 'Khaddar Shirwani5', 'khaddar-shirwani5', 'SK20076', NULL, NULL, NULL, 'Lorem Ipsum 5 is simply dummy text of the printing and typesetting industry.', 13398, 23083, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:25', NULL),
+(24, 0, NULL, 25, 'Khaddar Shirwani6', 'khaddar-shirwani6', 'SK20084', NULL, NULL, NULL, 'Lorem Ipsum 6 is simply dummy text of the printing and typesetting industry.', 27844, 19354, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:26', NULL),
+(25, 0, NULL, 15, 'Khaddar Shirwani7', 'khaddar-shirwani7', 'SK15362', NULL, NULL, NULL, 'Lorem Ipsum 7 is simply dummy text of the printing and typesetting industry.', 19362, 14648, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:41', NULL),
+(26, 0, NULL, 16, 'Khaddar Shirwani8', 'khaddar-shirwani8', 'SK17599', NULL, NULL, NULL, 'Lorem Ipsum 8 is simply dummy text of the printing and typesetting industry.', 14744, 5674, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:43', NULL),
+(27, 0, NULL, 17, 'Khaddar Shirwani9', 'khaddar-shirwani9', 'SK24744', NULL, NULL, NULL, 'Lorem Ipsum 9 is simply dummy text of the printing and typesetting industry.', 29536, 10974, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:44', NULL),
+(28, 0, NULL, 18, 'Khaddar Shirts1', 'khaddar-shirts1', 'SK17013', NULL, NULL, NULL, 'Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.', 1014, 1199, NULL, NULL, 0, 1, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:46', NULL),
+(29, 0, NULL, 19, 'Khaddar Shirts2', 'khaddar-shirts2', 'SK24021', NULL, NULL, NULL, 'Lorem Ipsum 2 is simply dummy text of the printing and typesetting industry.', 1769, 2266, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:47', NULL),
+(30, 0, NULL, 20, 'Khaddar Shirts3', 'khaddar-shirts3', 'SK16279', NULL, NULL, NULL, 'Lorem Ipsum 3 is simply dummy text of the printing and typesetting industry.', 1902, 2448, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:49', NULL),
+(31, 0, NULL, 21, 'Khaddar Shirts4', 'khaddar-shirts4', 'SK24019', NULL, NULL, NULL, 'Lorem Ipsum 4 is simply dummy text of the printing and typesetting industry.', 2281, 1528, NULL, NULL, 0, 1, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:51', NULL),
+(32, 0, NULL, 22, 'Khaddar Shirts5', 'khaddar-shirts5', 'SK19897', NULL, NULL, NULL, 'Lorem Ipsum 5 is simply dummy text of the printing and typesetting industry.', 1827, 2308, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:58', NULL),
+(33, 0, NULL, 23, 'Khaddar Shirts6', 'khaddar-shirts6', 'SK16552', NULL, NULL, NULL, 'Lorem Ipsum 6 is simply dummy text of the printing and typesetting industry.', 2169, 2114, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:25:59', NULL),
+(34, 0, NULL, 24, 'Khaddar Shirts7', 'khaddar-shirts7', 'SK24558', NULL, NULL, NULL, 'Lorem Ipsum 7 is simply dummy text of the printing and typesetting industry.', 1722, 831, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:26:08', NULL),
+(35, 0, NULL, 25, 'Khaddar Shirts8', 'khaddar-shirts8', 'SK17474', NULL, NULL, NULL, 'Lorem Ipsum 8 is simply dummy text of the printing and typesetting industry.', 1485, 573, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:26:09', NULL),
+(36, 0, NULL, 15, 'Khaddar Shirts9', 'khaddar-shirts9', 'SK21966', NULL, NULL, NULL, 'Lorem Ipsum 9 is simply dummy text of the printing and typesetting industry.', 1212, 1175, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:26:21', NULL),
+(37, 0, NULL, 16, 'Kamalia Wedding Suit1', 'kamalia-wedding-suit1', 'SK21607', NULL, NULL, NULL, 'Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.', 2325, 1286, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:26:23', NULL),
+(38, 0, NULL, 17, 'Kamalia Wedding Suit2', 'kamalia-wedding-suit2', 'SK16909', NULL, NULL, NULL, 'Lorem Ipsum 2 is simply dummy text of the printing and typesetting industry.', 1162, 2170, NULL, NULL, 0, 1, 1, '2019-10-05 21:53:03', NULL, '2020-01-31 23:26:24', NULL),
+(39, 0, NULL, 18, 'Kamalia Wedding Suit3', 'kamalia-wedding-suit3', 'SK24907', 'assets/uploads/product/8.jpg', 'assets/uploads/product/a8.jpg', NULL, 'Lorem Ipsum 3 is simply dummy text of the printing and typesetting industry.', 1392, 2434, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 03:07:29', NULL),
+(40, 0, NULL, 19, 'Kamalia Wedding Suit4', 'kamalia-wedding-suit4', 'SK24223', 'assets/uploads/product/7.jpg', 'assets/uploads/product/a7.jpg', NULL, 'Lorem Ipsum 4 is simply dummy text of the printing and typesetting industry.', 1466, 716, NULL, NULL, 0, 1, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 03:08:25', NULL),
+(41, 0, NULL, 20, 'Kamalia Wedding Suit5', 'kamalia-wedding-suit5', 'SK21630', 'assets/uploads/product/6.jpg', 'assets/uploads/product/a6.jpg', NULL, 'Lorem Ipsum 5 is simply dummy text of the printing and typesetting industry.', 1171, 1435, NULL, NULL, 0, 1, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 03:08:17', NULL),
+(42, 0, NULL, 21, 'Kamalia Wedding Suit6', 'kamalia-wedding-suit6', 'SK24947', 'assets/uploads/product/5.jpg', 'assets/uploads/product/a5.jpg', NULL, 'Lorem Ipsum 6 is simply dummy text of the printing and typesetting industry.', 1662, 1284, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 03:08:12', NULL),
+(43, 0, NULL, 22, 'Kamalia Wedding Suit7', 'kamalia-wedding-suit7', 'SK20020', 'assets/uploads/product/4.jpg', 'assets/uploads/product/a4.jpg', NULL, 'Lorem Ipsum 7 is simply dummy text of the printing and typesetting industry.', 1397, 1914, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 03:08:08', NULL),
+(44, 0, NULL, 23, 'Kamalia Wedding Suit8', 'kamalia-wedding-suit8', 'SK19407', 'assets/uploads/product/3.jpg', 'assets/uploads/product/a3.jpg', NULL, 'Lorem Ipsum 8 is simply dummy text of the printing and typesetting industry.', 1929, 611, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 03:08:04', NULL),
+(45, 0, NULL, 24, 'Kamalia Wedding Suit9', 'kamalia-wedding-suit9', 'SK17851', 'assets/uploads/product/2.jpg', 'assets/uploads/product/a2.jpg', NULL, 'Lorem Ipsum 9 is simply dummy text of the printing and typesetting industry.', 1991, 1405, NULL, NULL, 0, 1, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 03:07:59', NULL),
+(52, 0, NULL, 15, 'Cotton Shalwar Kameez122', 'cotton-shalwar-kameez122', 'SK20463dd', 'assets/uploads/product/1.jpg', 'assets/uploads/product/a1.jpg', '[\"public\\/assets\\/uploads\\/product\\/728333090.png\",\"public\\/assets\\/uploads\\/product\\/66074973.png\"]', '<p>Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.</p>', 4148, 3635, NULL, NULL, 0, 1, 1, '2019-11-18 22:24:31', NULL, '2020-02-01 03:07:51', NULL),
+(53, 1, NULL, 26, 'PC1', 'pc1', 'pc1123', NULL, NULL, NULL, '<p><span style=\"color: rgb(115, 135, 156); text-align: right;\">Product Description</span><br></p>', 123, 122, '2020-02-04', '2020-02-29', 1, 0, 1, '2020-02-03 19:21:09', 1, '2020-02-03 19:21:09', NULL),
+(54, 1, NULL, 27, 'PC2', 'pc2', 'pc11233', NULL, NULL, NULL, '<p><span style=\"color: rgb(115, 135, 156); text-align: right;\">Product Description</span><br></p>', 123, 122, '2020-02-04', '2020-02-29', 1, 0, 1, '2020-02-03 19:28:23', 1, '2020-02-06 16:44:26', NULL),
+(55, 1, 13, 27, 'dsad', 'dsad', 'adsad23424', NULL, NULL, NULL, '<p><span style=\"color: rgb(115, 135, 156); text-align: right;\">Product Descriptiondsadsad sad</span><br></p>', 123, 122, '2020-02-04', '2020-02-29', 1, 0, 1, '2020-02-03 19:30:49', 1, '2020-02-06 16:44:26', NULL),
+(56, 1, 13, 26, 'pc12', 'pc12', 'pc12123', 'assets/uploads/product/1600896238.png', 'assets/uploads/product/93075685.png', '[\"assets\\/uploads\\/product\\/941700947.png\",\"assets\\/uploads\\/product\\/1729859842.png\"]', '<p>asdssad&nbsp; asd asdsad&nbsp;</p>', 123, 121, '2020-02-05', '2020-02-29', 1, 0, 1, '2020-02-04 17:54:22', 1, '2020-02-06 16:44:27', NULL),
+(57, 1, 13, 26, 'Testing Fname Testing Lname', 'testing-fname-testing-lname', 'samdung11233', NULL, NULL, NULL, '<p>dsfsd fdsfsd&nbsp;</p>', 444, NULL, NULL, NULL, 0, 1, 1, '2020-02-06 12:24:33', 1, '2020-02-06 16:44:28', NULL),
+(61, 1, 13, 26, 'Testing Fname Testing Lnameasdsad', 'testing-fname-testing-lnameasdsad', 'samdung11233dssad', NULL, NULL, NULL, '<p>sadsad sadad sadsad</p>', 123, NULL, NULL, NULL, 0, 1, 1, '2020-02-06 15:26:45', 1, '2020-02-06 16:44:22', NULL),
+(63, 1, 13, 26, 'Testing Fname Testing Lnameasdsad3q', 'testing-fname-testing-lnameasdsad3q', 'samdung11233dssadewqe', NULL, NULL, NULL, '<p>sadsad sadad sadsad</p>', 123, NULL, NULL, NULL, 0, 1, 1, '2020-02-06 15:28:43', 1, '2020-02-06 15:29:49', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_variant`
+--
+
+CREATE TABLE `product_variant` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `language_id` tinyint(1) DEFAULT '0',
+  `variant_id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `variant_price` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updated_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_variant`
+--
+
+INSERT INTO `product_variant` (`id`, `language_id`, `variant_id`, `product_id`, `variant_price`, `status`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
+(1, 1, 4, 63, 111, 1, NULL, NULL, NULL, NULL),
+(2, 1, 6, 63, 222, 1, NULL, NULL, NULL, NULL),
+(3, 1, 5, 63, 443, 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -437,7 +475,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `language_id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `contact_number`, `occupation`, `profile_picture`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(1, 1, 1, 'Adulisbuy', 'admin@demo.com', NULL, '$2y$10$dFtCYSQk0saLbkrOywAR2.Ids8QSta1JDfz1y2IYdRrYfdo5PA5d2', 'HF8tDz1rH8HXjyGQ2o0JYH3zc5ZvCqb2s5qxRquWDU2RA4EogYGcTsnrprDp', NULL, NULL, 'assets/admin/images/14354318.png', '2020-01-14 14:45:20', NULL, '2020-01-14 14:45:20', NULL),
+(1, 1, 1, 'Adulisbuy', 'admin@demo.com', NULL, '$2y$10$dFtCYSQk0saLbkrOywAR2.Ids8QSta1JDfz1y2IYdRrYfdo5PA5d2', 'iclNYyrWx7OY5eDG887EJ3GWTaS6R7RcB0EmAaH0fXkOXwp6kL9rNNmKzu0J', NULL, NULL, 'assets/admin/images/14354318.png', '2020-01-14 14:45:20', NULL, '2020-01-14 14:45:20', NULL),
 (2, 2, 1, 'Testing Fname Lname', 'nb@nadocrm.com', NULL, '$2y$10$c5fg4t6cmsZrn1J.wQT3JuoaH/ICLtLMk1Y1PvolnNp/7P/MgDque', NULL, NULL, NULL, NULL, '2020-01-16 17:08:00', NULL, '2020-01-16 17:08:00', NULL),
 (3, 0, 1, 'Testing Fname Lname', 'nbs@nadocrm.com', NULL, '$2y$10$5FP3FaUNvZnGIYgtPWAyEuAn950F8DnB6JlqpKAOcuNYaqSG41LHi', NULL, NULL, NULL, NULL, '2020-01-16 17:15:00', NULL, '2020-01-16 17:15:00', NULL),
 (4, 0, 1, 'Testing Fname Lname', 'asnb@nadocrm.com', NULL, '$2y$10$BQ/gj/33RRgxxn9WOlY3PuLU8G.1iSKAcFhnH8nShkd1ANXmRt83K', NULL, NULL, NULL, NULL, '2020-01-16 17:52:49', NULL, '2020-01-16 17:52:49', NULL),
@@ -468,6 +506,18 @@ CREATE TABLE `variant` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `variant`
+--
+
+INSERT INTO `variant` (`id`, `attribute_id`, `language_id`, `name`, `status`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
+(1, 7, 1, '4gb', 1, '2020-01-31 17:23:34', 1, '2020-01-31 17:23:34', NULL),
+(2, 7, 1, '8gb', 1, '2020-01-31 17:25:32', 1, '2020-01-31 17:25:32', NULL),
+(3, 8, 2, 'small', 1, '2020-01-31 18:04:50', 1, '2020-01-31 18:04:50', NULL),
+(4, 8, 1, 'medium', 1, '2020-01-31 18:05:01', 1, '2020-01-31 18:05:01', NULL),
+(5, 9, 1, 'red', 1, '2020-02-05 21:56:30', 1, '2020-02-05 21:56:30', NULL),
+(6, 8, 1, 'small', 1, '2020-02-06 02:57:54', 1, '2020-02-05 21:57:54', NULL);
 
 --
 -- Indexes for dumped tables
@@ -536,6 +586,14 @@ ALTER TABLE `product`
   ADD UNIQUE KEY `product_sku_unique` (`sku`);
 
 --
+-- Indexes for table `product_variant`
+--
+ALTER TABLE `product_variant`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_variant_variant_id_foreign` (`variant_id`),
+  ADD KEY `product_variant_product_id_foreign` (`product_id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -576,13 +634,13 @@ ALTER TABLE `variant`
 -- AUTO_INCREMENT for table `attribute`
 --
 ALTER TABLE `attribute`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `attribute_sub_category`
 --
 ALTER TABLE `attribute_sub_category`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -618,7 +676,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- AUTO_INCREMENT for table `product_variant`
+--
+ALTER TABLE `product_variant`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -648,7 +712,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `variant`
 --
 ALTER TABLE `variant`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

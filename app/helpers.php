@@ -13,4 +13,10 @@ if (!function_exists('single_image')) {
         return $image;
     }
 }
+
+if (!function_exists('getSinglieField')) {
+    function getSinglieField($table,$where,$field) {
+        return \DB::table($table)->where($where)->first()->$field;
+    }
+}
 ?>

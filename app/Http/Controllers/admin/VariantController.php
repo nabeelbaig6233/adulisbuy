@@ -5,7 +5,6 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\models\variant;
 use Illuminate\Http\Request;
-use File;
 
 class VariantController extends Controller
 {

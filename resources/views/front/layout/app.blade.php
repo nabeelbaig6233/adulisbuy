@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Adulisbuy</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +10,7 @@
     <meta name="description" content="Adulisbuy">
     <meta name="keywords" content="Adulisbuy">
     <meta name="author" content="Adulisbuy">
-    <link rel="icon" href="{{asset('assets/front/images/')}}/layout-1/logo/fav.png" >
+    <link rel="icon" href="{{asset('assets/front/images/')}}/layout-1/logo/fav.png">
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;display=swap" rel="stylesheet">
@@ -33,18 +34,6 @@
 </head>
 <body class="bg-light ">
 
-<!-- loader start -->
-<!--<div class="loader-wrapper">
-    <div>
-        <img src="{{asset('assets/front/images/')}}/loader.gif" alt="loader">
-    </div>
-</div>-->
-<!-- loader end -->
-
-<!--header start-->
-<?php
-
-?>
 <header>
     <div class="mobile-fix-option"></div>
     <div class="top-header">
@@ -60,9 +49,9 @@
                                 Download aap
                             </h6>
                             <ul>
-                                <li><a><i class="fa fa-apple" ></i></a></li>
-                                <li><a><i class="fa fa-android" ></i></a></li>
-                                <li><a><i class="fa fa-windows" ></i></a></li>
+                                <li><a><i class="fa fa-apple"></i></a></li>
+                                <li><a><i class="fa fa-android"></i></a></li>
+                                <li><a><i class="fa fa-windows"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -72,7 +61,7 @@
 
                         <div class="language-block">
                             <div class="language-dropdown">
-                                <span  class="language-dropdown-click">
+                                <span class="language-dropdown-click">
                                     english <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </span>
                                 <ul class="language-dropdown-open">
@@ -120,7 +109,7 @@
                                 </ul>
                             </div>
                             <div class="brand-logo">
-                                <a href="index.php">
+                                <a href="{{url('/')}}">
                                     <img src="{{asset('assets/front/images/')}}/layout-1/logo/logo.png" class="img-fluid  " alt="logo-header">
                                 </a>
                             </div>
@@ -137,13 +126,9 @@
                                             <a href="index.php">Home</a>
                                         </li>
 
-                                        <li>
-                                            <a href="shop.php">shop</a>
-
-
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Dropdown
+                                                Products
                                             </a>
                                             <div class="dropdown-menu dropdown-megamenu" aria-labelledby="navbarDropdown">
                                                 <div class="container">
@@ -156,7 +141,7 @@
                                                                     <div class="cat-sub">
                                                                         @foreach($sub_category as $scat)
                                                                             @if ($scat->category_id === $cat->id)
-                                                                                <a class="dropdown-item" href="{{route('product.index',['category'=>$cats->slug])}}">{{$scat->name}}</a>
+                                                                                <a class="dropdown-item" href="{{route('product.index',['category'=>$scat->slug])}}">{{$scat->name}}</a>
                                                                             @endif
                                                                         @endforeach
                                                                     </div>
@@ -171,19 +156,13 @@
                                         <!--product-meu end-->
 
                                         <!--mega-meu start-->
-                                        <li class="mega" >
+                                        <li class="mega">
                                             <a href="about-us.php">About Us</a>
 
                                         </li>
                                         <!--mega-meu end-->
 
 
-
-                                        <!--blog-meu start-->
-                                        <li>
-                                            <a href="#">blog</a>
-
-                                        </li>
                                         <!--blog-meu end-->
                                         <!--pages-meu start-->
                                         <li><a href="contact-us.php">Contact Us</a>
@@ -201,9 +180,12 @@
                                         <li class="mobile-wishlist" onclick="openWishlist()">
                                             <a href="#">
                                                 <i class="fa fa-heart"></i>
-                                                <div class="cart-item"><div>0 item<span>wishlist</span></div></div></a></li>
+                                                <div class="cart-item">
+                                                    <div>0 item<span>wishlist</span></div>
+                                                </div>
+                                            </a></li>
                                         <li class="mobile-search"><a href="#"><i class="icon-search"></i></a>
-                                            <div class ="search-overlay">
+                                            <div class="search-overlay">
                                                 <div>
                                                     <span class="close-mobile-search">×</span>
                                                     <div class="overlay-content">
@@ -219,7 +201,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div></li>
+                                            </div>
+                                        </li>
                                         <li class="mobile-setting mobile-setting-hover" onclick="openSetting()"><a href="#"><i class="icon-settings"></i></a>
                                         </li>
                                     </ul>
@@ -252,7 +235,7 @@
                                         <ul class="nav-cat title-font">
                                             @if ($category)
                                                 @foreach ($category as $cats)
-                                                    <li> <img src="{{asset($cats->image)}}" alt="{{$cats->name}}"> <a href="{{route('product.index',['category'=>$cats->slug])}}">{{$cats->name}}</a></li>
+                                                    <li><img src="{{asset($cats->image)}}" alt="{{$cats->name}}"> <a href="{{route('product.index',['category'=>$cats->slug])}}">{{$cats->name}}</a></li>
                                                 @endforeach
                                             @endif
                                         </ul>
@@ -266,7 +249,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="search"><i class="fa fa-search"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Search a Product" >
+                                            <input type="text" class="form-control" placeholder="Search a Product">
                                             <div class="input-group-prepend">
                                                 <select>
                                                     <option>All Category</option>
@@ -287,7 +270,7 @@
                                 </div>
                             </div>
                             <div class="btn-group">
-                                <div  class="gift-block" data-toggle="dropdown" >
+                                <div class="gift-block" data-toggle="dropdown">
                                     <div class="grif-icon">
                                         <i class="fa fa-gift"></i>
                                     </div>
@@ -298,7 +281,7 @@
                                 </div>
                                 <div class="dropdown-menu gift-dropdown">
                                     <div class="media">
-                                        <div  class="mr-3">
+                                        <div class="mr-3">
                                             <img src="{{asset('assets/front/images/')}}/icon/1.png" alt="Generic placeholder image">
                                         </div>
                                         <div class="media-body">
@@ -307,16 +290,16 @@
                                         </div>
                                     </div>
                                     <div class="media">
-                                        <div  class="mr-3">
+                                        <div class="mr-3">
                                             <img src="{{asset('assets/front/images/')}}/icon/2.png" alt="Generic placeholder image">
                                         </div>
                                         <div class="media-body">
                                             <h5 class="mt-0">Fashion Discount</h5>
-                                            <p><img src="{{asset('assets/front/images/')}}/icon/fire.png"  class="fire" alt="gift-block">Extra 10% off (upto Rs. 10,000*) </p>
+                                            <p><img src="{{asset('assets/front/images/')}}/icon/fire.png" class="fire" alt="gift-block">Extra 10% off (upto Rs. 10,000*) </p>
                                         </div>
                                     </div>
                                     <div class="media">
-                                        <div  class="mr-3">
+                                        <div class="mr-3">
                                             <img src="{{asset('assets/front/images/')}}/icon/3.png" alt="Generic placeholder image">
                                         </div>
                                         <div class="media-body">
@@ -325,7 +308,7 @@
                                         </div>
                                     </div>
                                     <div class="media">
-                                        <div  class="mr-3">
+                                        <div class="mr-3">
                                             <img src="{{asset('assets/front/images/')}}/icon/6.png" alt="Generic placeholder image">
                                         </div>
                                         <div class="media-body">
@@ -334,7 +317,7 @@
                                         </div>
                                     </div>
                                     <div class="media">
-                                        <div  class="mr-3">
+                                        <div class="mr-3">
                                             <img src="{{asset('assets/front/images/')}}/icon/5.png" alt="Generic placeholder image">
                                         </div>
                                         <div class="media-body">
@@ -372,14 +355,14 @@
                         </div>
                     </div>
                     <div class="app-item-group ">
-                        <div class="sosiyal-block" >
+                        <div class="sosiyal-block">
                             <h6>follow us</h6>
                             <ul class="sosiyal">
-                                <li><a href="#"><i class="fa fa-facebook" ></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus" ></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" ></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram" ></i></a></li>
-                                <li><a href="#"><i class="fa fa-rss" ></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -595,35 +578,6 @@
 <!-- Add to cart bar end-->
 
 
-<!--Newsletter modal popup start-->
-<!-- <div class="modal fade bd-example-modal-lg theme-modal" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="news-latter">
-                    <div class="modal-bg">
-                        <div class="offer-content">
-                            <div>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                <h2>newsletter</h2>
-                                <p>Subscribe to our website mailling list <br> and get a Offer, Just for you!</p>
-                                <form action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda" class="auth-form needs-validation" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-                                    <div class="form-group mx-sm-3">
-                                        <input type="email" class="form-control" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email" required="required">
-                                        <button type="submit" class="btn btn-theme btn-normal btn-sm " id="mc-submit">subscribe</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!--Newsletter Modal popup end-->
-
-
 <!-- Quick-view modal popup start-->
 <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -817,7 +771,7 @@
             </div>
         </div>
         <div class="setting-block">
-            <div >
+            <div>
                 <h5>language</h5>
                 <ul>
                     <li><a href="#">english</a></li>
@@ -842,7 +796,7 @@
 <script src="{{asset('assets/front/js/slick.js')}}"></script>
 
 <!-- popper js-->
-<script src="{{asset('assets/front/js/popper.min.js')}}" ></script>
+<script src="{{asset('assets/front/js/popper.min.js')}}"></script>
 
 <!-- Timer js-->
 <script src="{{asset('assets/front/js/menu.js')}}"></script>

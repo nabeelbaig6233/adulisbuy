@@ -90,11 +90,10 @@ class ProductController extends Controller
                 for ($j = 0; $j < count($request->file('multi_image')); $j++) {
                     $image = single_image($request->file('multi_image',TRUE)[$j],request()->segment(2));
                     $content[$i] = $image;
+                    $i++;
                 }
             }
-            if (!empty($content)) {
-                $record->multi_image = !empty($content)?json_encode($content):'';
-            }
+            $record->multi_image = !empty($content)?json_encode($content):'';
 
             $record->save();
 

@@ -3,7 +3,7 @@
 
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Adulisbuy</title>
-    
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="Adulisbuy">
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/color1.css" media="screen" id="color">
 
     <!-- Style css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen" id="color">               
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen" id="color">
 
 </head>
 <body class="bg-light ">
@@ -174,8 +174,8 @@
 
                                         <!--SHOP-->
                                         <li>
-                                            <a href="shop.php">shop</a>
-                                       
+                                            <a href="shop.blade.php">shop</a>
+
                                         <!--</li>-->
                                         <!--SHOP-END-->
                                         <!--product-meu start-->
@@ -183,7 +183,7 @@
                                         <!--    <a href="product.php">product-->
                                         <!--</a>-->
                                         <!--</li>-->
-                                        
+
                                           <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               Dropdown
@@ -303,27 +303,27 @@
                                                 </div>
                                             </div>
                                           </li>
-                                        
+
                                         <!--product-meu end-->
 
                                         <!--mega-meu start-->
                                         <li class="mega" >
-                                            <a href="about-us.php">About Us</a> 
-                                     
+                                            <a href="about-us.php">About Us</a>
+
                                         </li>
                                         <!--mega-meu end-->
 
-                                      
+
 
                                         <!--blog-meu start-->
                                         <li>
                                             <a href="#">blog</a>
-                                          
+
                                         </li>
                                         <!--blog-meu end-->
                                       <!--pages-meu start-->
                                         <li><a href="contact-us.php">Contact Us</a>
-                                         
+
                                         </li>
                                         <!--product-end end-->
                                     </ul>

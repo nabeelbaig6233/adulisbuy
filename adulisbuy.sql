@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2020 at 05:59 PM
+-- Generation Time: Feb 10, 2020 at 10:10 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -114,9 +114,9 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`id`, `language_id`, `name`, `image`, `slug`, `status`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
 (12, 2, 'Laptops', 'assets/uploads/category/01.png', 'laptops', 1, '2020-01-22 21:05:45', 1, '2020-01-22 21:05:45', 1),
-(13, 2, 'Desktops', 'assets/uploads/category/02.png', 'desktops', 1, '2020-01-22 21:05:45', 1, '2020-01-22 21:05:45', 1),
-(14, 2, 'Mobile Phones', 'assets/uploads/category/03.png', 'mobile-phones', 1, '2020-01-22 21:05:45', 1, '2020-01-22 21:05:45', 1),
-(15, 2, 'Tablets', 'assets/uploads/category/04.png', 'tablets', 1, '2020-01-22 21:05:45', 1, '2020-01-22 21:05:45', 1),
+(13, 1, 'Desktops', 'assets/uploads/category/02.png', 'desktops', 1, '2020-01-22 21:05:45', 1, '2020-01-22 21:05:45', 1),
+(14, 1, 'Mobile Phones', 'assets/uploads/category/03.png', 'mobile-phones', 1, '2020-01-22 21:05:45', 1, '2020-01-22 21:05:45', 1),
+(15, 1, 'Tablets', 'assets/uploads/category/04.png', 'tablets', 1, '2020-01-22 21:05:45', 1, '2020-01-22 21:05:45', 1),
 (16, 2, 'TVs', 'assets/uploads/category/05.png', 'tvs', 1, '2020-01-22 21:05:45', 1, '2020-01-22 21:05:45', 1),
 (17, 2, 'Digital Cameras', 'assets/uploads/category/06.png', 'digital-cameras', 1, '2020-01-22 21:05:45', 1, '2020-01-22 21:05:45', 1),
 (18, 2, 'Appliances', 'assets/uploads/category/07.png', 'appliances', 1, '2020-01-22 21:05:45', 1, '2020-01-22 21:05:45', 1),
@@ -310,13 +310,13 @@ INSERT INTO `product` (`id`, `language_id`, `category_id`, `sub_category_id`, `n
 (44, 0, NULL, 23, 'Kamalia Wedding Suit8', 'kamalia-wedding-suit8', 'SK19407', 'assets/uploads/product/3.jpg', 'assets/uploads/product/a3.jpg', NULL, 'Lorem Ipsum 8 is simply dummy text of the printing and typesetting industry.', 1929, 611, NULL, NULL, 0, 0, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 03:08:04', NULL),
 (45, 0, NULL, 24, 'Kamalia Wedding Suit9', 'kamalia-wedding-suit9', 'SK17851', 'assets/uploads/product/2.jpg', 'assets/uploads/product/a2.jpg', NULL, 'Lorem Ipsum 9 is simply dummy text of the printing and typesetting industry.', 1991, 1405, NULL, NULL, 0, 1, 1, '2019-10-05 21:53:03', NULL, '2020-02-01 03:07:59', NULL),
 (52, 0, NULL, 15, 'Cotton Shalwar Kameez122', 'cotton-shalwar-kameez122', 'SK20463dd', 'assets/uploads/product/1.jpg', 'assets/uploads/product/a1.jpg', '[\"public\\/assets\\/uploads\\/product\\/728333090.png\",\"public\\/assets\\/uploads\\/product\\/66074973.png\"]', '<p>Lorem Ipsum 1 is simply dummy text of the printing and typesetting industry.</p>', 4148, 3635, NULL, NULL, 0, 1, 1, '2019-11-18 22:24:31', NULL, '2020-02-01 03:07:51', NULL),
-(53, 1, NULL, 26, 'PC1', 'pc1', 'pc1123', NULL, NULL, NULL, '<p><span style=\"color: rgb(115, 135, 156); text-align: right;\">Product Description</span><br></p>', 123, 122, '2020-02-04', '2020-02-29', 1, 0, 1, '2020-02-03 19:21:09', 1, '2020-02-03 19:21:09', NULL),
+(53, 1, 13, 26, 'PC1', 'pc1', 'pc1123', 'assets/uploads/product/138699832.jpg', 'assets/uploads/product/1555717359.jpg', '[\"assets\\/uploads\\/product\\/1954967303.jpg\",\"assets\\/uploads\\/product\\/629236815.jpg\"]', '<p><span style=\"color: rgb(115, 135, 156); text-align: right;\">Product Description</span><br></p>', 123, 122, '2020-02-04', '2020-02-29', 1, 1, 1, '2020-02-03 19:21:09', 1, '2020-02-07 21:25:59', NULL),
 (54, 1, NULL, 27, 'PC2', 'pc2', 'pc11233', NULL, NULL, NULL, '<p><span style=\"color: rgb(115, 135, 156); text-align: right;\">Product Description</span><br></p>', 123, 122, '2020-02-04', '2020-02-29', 1, 0, 1, '2020-02-03 19:28:23', 1, '2020-02-06 16:44:26', NULL),
-(55, 1, 13, 27, 'dsad', 'dsad', 'adsad23424', NULL, NULL, NULL, '<p><span style=\"color: rgb(115, 135, 156); text-align: right;\">Product Descriptiondsadsad sad</span><br></p>', 123, 122, '2020-02-04', '2020-02-29', 1, 0, 1, '2020-02-03 19:30:49', 1, '2020-02-06 16:44:26', NULL),
-(56, 1, 13, 26, 'pc12', 'pc12', 'pc12123', 'assets/uploads/product/1600896238.png', 'assets/uploads/product/93075685.png', '[\"assets\\/uploads\\/product\\/941700947.png\",\"assets\\/uploads\\/product\\/1729859842.png\"]', '<p>asdssad&nbsp; asd asdsad&nbsp;</p>', 123, 121, '2020-02-05', '2020-02-29', 1, 0, 1, '2020-02-04 17:54:22', 1, '2020-02-06 16:44:27', NULL),
-(57, 1, 13, 26, 'Testing Fname Testing Lname', 'testing-fname-testing-lname', 'samdung11233', NULL, NULL, NULL, '<p>dsfsd fdsfsd&nbsp;</p>', 444, NULL, NULL, NULL, 0, 1, 1, '2020-02-06 12:24:33', 1, '2020-02-06 16:44:28', NULL),
-(61, 1, 13, 26, 'Testing Fname Testing Lnameasdsad', 'testing-fname-testing-lnameasdsad', 'samdung11233dssad', NULL, NULL, NULL, '<p>sadsad sadad sadsad</p>', 123, NULL, NULL, NULL, 0, 1, 1, '2020-02-06 15:26:45', 1, '2020-02-06 16:44:22', NULL),
-(63, 1, 13, 26, 'Testing Fname Testing Lnameasdsad3q', 'testing-fname-testing-lnameasdsad3q', 'samdung11233dssadewqe', NULL, NULL, NULL, '<p>sadsad sadad sadsad</p>', 123, NULL, NULL, NULL, 0, 1, 1, '2020-02-06 15:28:43', 1, '2020-02-06 15:29:49', NULL);
+(55, 1, 13, 27, 'dsad', 'dsad', 'adsad23424', 'assets/uploads/product/1550528426.jpg', 'assets/uploads/product/1450376423.jpg', '[\"assets\\/uploads\\/product\\/1382962990.jpg\",\"assets\\/uploads\\/product\\/824056016.jpg\"]', '<p><span style=\"color: rgb(115, 135, 156); text-align: right;\">Product Descriptiondsadsad sad</span><br></p>', 123, 122, '2020-02-04', '2020-02-29', 1, 1, 1, '2020-02-03 19:30:49', 1, '2020-02-07 21:24:50', NULL),
+(56, 1, 13, 26, 'pc12', 'pc12', 'pc12123', 'assets/uploads/product/1285194232.jpg', 'assets/uploads/product/1528701484.jpg', '[\"assets\\/uploads\\/product\\/1369882632.jpg\",\"assets\\/uploads\\/product\\/946450459.jpg\"]', '<p>asdssad&nbsp; asd asdsad&nbsp;</p>', 123, 121, '2020-02-05', '2020-02-29', 1, 1, 1, '2020-02-04 17:54:22', 1, '2020-02-07 21:23:56', NULL),
+(57, 1, 13, 26, 'Testing Fname Testing Lname', 'testing-fname-testing-lname', 'samdung11233', 'assets/uploads/product/1697932112.jpg', 'assets/uploads/product/1763926116.jpg', '[\"assets\\/uploads\\/product\\/468732937.jpg\",\"assets\\/uploads\\/product\\/265179932.jpg\"]', '<p>dsfsd fdsfsd&nbsp;</p>', 444, 333, '2020-02-08', '2020-02-29', 1, 1, 1, '2020-02-06 12:24:33', 1, '2020-02-07 21:23:19', NULL),
+(61, 1, 13, 26, 'Testing Fname Testing Lnameasdsad', 'testing-fname-testing-lnameasdsad', 'samdung11233dssad', 'assets/uploads/product/359675680.jpg', 'assets/uploads/product/2099205110.jpg', '[\"assets\\/uploads\\/product\\/925707175.jpg\",\"assets\\/uploads\\/product\\/2138830522.jpg\"]', '<p>sadsad sadad sadsad</p>', 200, 150, '2020-02-08', '2020-02-29', 1, 1, 1, '2020-02-06 15:26:45', 1, '2020-02-07 21:22:21', NULL),
+(63, 1, 13, 26, 'Testing Fname Testing Lnameasdsad3q', 'testing-fname-testing-lnameasdsad3q', 'samdung11233dssadewqe', 'assets/uploads/product/289226753.jpg', 'assets/uploads/product/1291020544.jpg', '[\"assets\\/uploads\\/product\\/1113942906.jpg\",\"assets\\/uploads\\/product\\/1722321763.jpg\"]', '<p>sadsad sadad sadsad</p>', 123, 111, '2020-02-08', '2020-02-08', 1, 1, 1, '2020-02-06 15:28:43', 1, '2020-02-07 21:21:18', NULL);
 
 -- --------------------------------------------------------
 

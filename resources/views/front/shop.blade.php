@@ -220,10 +220,14 @@
                                                             <div class="product-box">
                                                                 <div class="product-imgbox">
                                                                     <div class="product-front">
+                                                                        <a href="{{route('product.show',['product'=>$product->slug])}}">
                                                                         <img src="{{asset($product->image)}}" class="img-fluid  " alt="product">
+                                                                        </a>
                                                                     </div>
                                                                     <div class="product-back">
+                                                                        <a href="{{route('product.show',['product'=>$product->slug])}}">
                                                                         <img src="{{asset($product->hover_image)}}" class="img-fluid  " alt="product">
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-detail detail-center ">

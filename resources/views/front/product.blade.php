@@ -1,5 +1,5 @@
-<?php include'header.php'?>
-
+@extends('front.layout.app')
+@section('content')
 <!-- breadcrumb start -->
 <div class="breadcrumb-main ">
     <div class="container">
@@ -121,25 +121,25 @@
                         <div class="offer-slider slide-1">
                             <div>
                                 <div class="media">
-                                    <a href="#"><img class="img-fluid " src="assets/images/product-sidebar/001.jpg" alt=""></a>
+                                    <a href="#"><img class="img-fluid " src="{{asset('assets/front/images/')}}/product-sidebar/001.jpg" alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div><a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
                                         <h4>$500.00</h4></div>
                                 </div>
                                 <div class="media">
-                                    <a href="#"><img class="img-fluid " src="assets/images/product-sidebar/002.jpg" alt=""></a>
+                                    <a href="#"><img class="img-fluid " src="{{asset('assets/front/images/')}}/product-sidebar/002.jpg" alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div><a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
                                         <h4>$500.00</h4></div>
                                 </div>
                                 <div class="media">
-                                    <a href="#"><img class="img-fluid " src="assets/images/product-sidebar/003.jpg" alt=""></a>
+                                    <a href="#"><img class="img-fluid " src="{{asset('assets/front/images/')}}/product-sidebar/003.jpg" alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div><a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
                                         <h4>$500.00</h4></div>
                                 </div>
                                 <div class="media">
-                                    <a href="#"><img class="img-fluid " src="assets/images/product-sidebar/004.jpg" alt=""></a>
+                                    <a href="#"><img class="img-fluid " src="{{asset('assets/front/images/')}}/product-sidebar/004.jpg" alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div><a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
                                         <h4>$500.00</h4></div>
@@ -147,25 +147,25 @@
                             </div>
                             <div>
                                 <div class="media">
-                                    <a href="#"><img class="img-fluid " src="assets/images/product-sidebar/004.jpg" alt=""></a>
+                                    <a href="#"><img class="img-fluid " src="{{asset('assets/front/images/')}}/product-sidebar/004.jpg" alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div><a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
                                         <h4>$500.00</h4></div>
                                 </div>
                                 <div class="media">
-                                    <a href="#"><img class="img-fluid " src="assets/images/product-sidebar/003.jpg" alt=""></a>
+                                    <a href="#"><img class="img-fluid " src="{{asset('assets/front/images/')}}/product-sidebar/003.jpg" alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div><a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
                                         <h4>$500.00</h4></div>
                                 </div>
                                 <div class="media">
-                                    <a href="#"><img class="img-fluid " src="assets/images/product-sidebar/001.jpg" alt=""></a>
+                                    <a href="#"><img class="img-fluid " src="{{asset('assets/front/images/')}}/product-sidebar/001.jpg" alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div><a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
                                         <h4>$500.00</h4></div>
                                 </div>
                                 <div class="media">
-                                    <a href="#"><img class="img-fluid " src="assets/images/product-sidebar/002.jpg" alt=""></a>
+                                    <a href="#"><img class="img-fluid " src="{{asset('assets/front/images/')}}/product-sidebar/002.jpg" alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div><a href="product-page(no-sidebar).html"><h6>Slim Fit Cotton Shirt</h6></a>
                                         <h4>$500.00</h4></div>
@@ -185,18 +185,18 @@
                         <div class="row">
                             <div class="col-lg-5">
                                 <div class="product-slick ">
-                                    <div><img src="assets/images/product-sidebar/001.jpg" alt="" class="img-fluid  image_zoom_cls-0"></div>
-                                    <div><img src="assets/images/product-sidebar/002.jpg" alt="" class="img-fluid  image_zoom_cls-1"></div>
-                                    <div><img src="assets/images/product-sidebar/003.jpg" alt="" class="img-fluid  image_zoom_cls-2"></div>
-                                    <div><img src="assets/images/product-sidebar/004.jpg" alt="" class="img-fluid  image_zoom_cls-3"></div>
+                                    <div><img src="{{asset('assets/front/images/')}}/product-sidebar/001.jpg" alt="" class="img-fluid  image_zoom_cls-0"></div>
+                                    <div><img src="{{asset('assets/front/images/')}}/product-sidebar/002.jpg" alt="" class="img-fluid  image_zoom_cls-1"></div>
+                                    <div><img src="{{asset('assets/front/images/')}}/product-sidebar/003.jpg" alt="" class="img-fluid  image_zoom_cls-2"></div>
+                                    <div><img src="{{asset('assets/front/images/')}}/product-sidebar/004.jpg" alt="" class="img-fluid  image_zoom_cls-3"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 p-0">
                                         <div class="slider-nav">
-                                            <div><img src="assets/images/product-sidebar/001.jpg" alt="" class="img-fluid  image_zoom_cls-0"></div>
-                                            <div><img src="assets/images/product-sidebar/002.jpg" alt="" class="img-fluid  image_zoom_cls-1"></div>
-                                            <div><img src="assets/images/product-sidebar/003.jpg" alt="" class="img-fluid  image_zoom_cls-2"></div>
-                                            <div><img src="assets/images/product-sidebar/004.jpg" alt="" class="img-fluid  image_zoom_cls-3"></div>
+                                            <div><img src="{{asset('assets/front/images/')}}/product-sidebar/001.jpg" alt="" class="img-fluid  image_zoom_cls-0"></div>
+                                            <div><img src="{{asset('assets/front/images/')}}/product-sidebar/002.jpg" alt="" class="img-fluid  image_zoom_cls-1"></div>
+                                            <div><img src="{{asset('assets/front/images/')}}/product-sidebar/003.jpg" alt="" class="img-fluid  image_zoom_cls-2"></div>
+                                            <div><img src="{{asset('assets/front/images/')}}/product-sidebar/004.jpg" alt="" class="img-fluid  image_zoom_cls-3"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
                                                         <h5 class="modal-title" id="exampleModalLabel">Sheer Straight Kurta</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                     </div>
-                                                    <div class="modal-body"><img src="assets/images/size-chart.jpg" alt="" class="img-fluid "></div>
+                                                    <div class="modal-body"><img src="{{asset('assets/front/images/')}}/size-chart.jpg" alt="" class="img-fluid "></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -245,13 +245,6 @@
                                     </div>
                                     <div class="border-product">
                                         <div class="product-icon">
-                                            <ul class="product-social">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                            </ul>
                                             <form class="d-inline-block">
                                                 <button class="wishlist-btn"><i class="fa fa-heart"></i><span class="title-font">Add To WishList</span></button>
                                             </form>
@@ -386,10 +379,10 @@
                         <div class="product-box">
                             <div class="product-imgbox">
                                 <div class="product-front">
-                                    <img src="assets/images/layout-1/product/1.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/1.jpg" class="img-fluid  " alt="product">
                                 </div>
                                 <div class="product-back">
-                                    <img src="assets/images/layout-1/product/a1.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/a1.jpg" class="img-fluid  " alt="product">
                                 </div>
                             </div>
                             <div class="product-detail detail-center ">
@@ -440,10 +433,10 @@
                         <div class="product-box">
                             <div class="product-imgbox">
                                 <div class="product-front">
-                                    <img src="assets/images/layout-1/product/2.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/2.jpg" class="img-fluid  " alt="product">
                                 </div>
                                 <div class="product-back">
-                                    <img src="assets/images/layout-1/product/a2.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/a2.jpg" class="img-fluid  " alt="product">
                                 </div>
                             </div>
                             <div class="product-detail detail-center ">
@@ -494,10 +487,10 @@
                         <div class="product-box">
                             <div class="product-imgbox">
                                 <div class="product-front">
-                                    <img src="assets/images/layout-1/product/3.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/3.jpg" class="img-fluid  " alt="product">
                                 </div>
                                 <div class="product-back">
-                                    <img src="assets/images/layout-1/product/a3.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/a3.jpg" class="img-fluid  " alt="product">
                                 </div>
                             </div>
                             <div class="product-detail detail-center ">
@@ -548,10 +541,10 @@
                         <div class="product-box">
                             <div class="product-imgbox">
                                 <div class="product-front">
-                                    <img src="assets/images/layout-1/product/4.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/4.jpg" class="img-fluid  " alt="product">
                                 </div>
                                 <div class="product-back">
-                                    <img src="assets/images/layout-1/product/a4.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/a4.jpg" class="img-fluid  " alt="product">
                                 </div>
                             </div>
                             <div class="product-detail detail-center ">
@@ -602,10 +595,10 @@
                         <div class="product-box">
                             <div class="product-imgbox">
                                 <div class="product-front">
-                                    <img src="assets/images/layout-1/product/5.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/5.jpg" class="img-fluid  " alt="product">
                                 </div>
                                 <div class="product-back">
-                                    <img src="assets/images/layout-1/product/a5.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/a5.jpg" class="img-fluid  " alt="product">
                                 </div>
                             </div>
                             <div class="product-detail detail-center ">
@@ -656,10 +649,10 @@
                         <div class="product-box">
                             <div class="product-imgbox">
                                 <div class="product-front">
-                                    <img src="assets/images/layout-1/product/6.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/6.jpg" class="img-fluid  " alt="product">
                                 </div>
                                 <div class="product-back">
-                                    <img src="assets/images/layout-1/product/a6.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/a6.jpg" class="img-fluid  " alt="product">
                                 </div>
                             </div>
                             <div class="product-detail detail-center ">
@@ -710,10 +703,10 @@
                         <div class="product-box">
                             <div class="product-imgbox">
                                 <div class="product-front">
-                                    <img src="assets/images/layout-1/product/7.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/7.jpg" class="img-fluid  " alt="product">
                                 </div>
                                 <div class="product-back">
-                                    <img src="assets/images/layout-1/product/a7.jpg" class="img-fluid  " alt="product">
+                                    <img src="{{asset('assets/front/images/')}}/layout-1/product/a7.jpg" class="img-fluid  " alt="product">
                                 </div>
                             </div>
                             <div class="product-detail detail-center ">
@@ -768,4 +761,4 @@
 <!-- related products -->
 
 <!--contact banner end-->
-<?php include'footer.php'?>
+    @endsection

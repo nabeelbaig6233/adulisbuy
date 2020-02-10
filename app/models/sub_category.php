@@ -20,4 +20,8 @@ class sub_category extends Model
         return $query;
     }
 
+    public function attribute() {
+        return $this->belongsToMany('App\models\attribute');
+    }
+
 }

@@ -30,4 +30,8 @@ class attribute extends Model
     public function getAttributess() {
         return attribute::select('id','name')->where('status',TRUE)->get()->all();
     }
+
+    public function sub_category() {
+        return $this->belongsToMany('App\models\sub_category');
+    }
 }

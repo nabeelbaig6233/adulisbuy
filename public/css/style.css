@@ -199,7 +199,7 @@ p.terms_text01 {
     width: 60%;
     display: block;
     margin: 14px auto;
-    line-height: 27px; 
+    line-height: 27px;
 }
 
 .conting ul {
@@ -220,7 +220,7 @@ p.terms_text01 {
     opacity:1;
     -webkit-transform: translateY(0px);
             transform: translateY(0px);-webkit-transition:.5s ease all;transition:.5s ease all;
-    
+
 }
 
 
@@ -249,6 +249,21 @@ p.terms_text01 {
 
 .m-tb-15{
         margin: 15px 0;
+}
+
+.btn-normal {
+    font-size: 14px;
+    padding: 18px 45px;
+    font-weight: 700;
+    color: #fff !important;
+    background-color: #ff6000 !important;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    display: inline-block;
+    line-height: 1;
+    border-radius: 0;
+    letter-spacing: 0.05em;
 }
 @charset "UTF-8";
 

@@ -66,14 +66,14 @@ Route::middleware(['admin'])->prefix('admin')->group(function(){
     Route::post('/variant/delete_all','admin\VariantController@delete_all')->name('variant.delete_all');
 
     // product
-    Route::get('/product','admin\productController@index')->name('product');
-    Route::any('/product/form/{form}','admin\productController@form');
-    Route::any('/product/form/{form}/{id}','admin\productController@form');
-    Route::get('/product/view/{id}','admin\productController@view');
-    Route::get('/product/sub-cat','admin\productController@getSubCategory')->name('subcat');
-    Route::post('/product/featured','admin\productController@featured')->name('featured');
-    Route::delete('/product/destroy/{id}','admin\productController@destroy');
-    Route::post('/product/delete_all','admin\productController@delete_all')->name('product.delete_all');
+    Route::get('/product','admin\ProductController@index')->name('product');
+    Route::any('/product/form/{form}','admin\ProductController@form');
+    Route::any('/product/form/{form}/{id}','admin\ProductController@form');
+    Route::get('/product/view/{id}','admin\ProductController@view');
+    Route::get('/product/sub-cat','admin\ProductController@getSubCategory')->name('subcat');
+    Route::post('/product/featured','admin\ProductController@featured')->name('featured');
+    Route::delete('/product/destroy/{id}','admin\ProductController@destroy');
+    Route::post('/product/delete_all','admin\ProductController@delete_all')->name('product.delete_all');
     Route::get('/product/getattr/{id}','Admin\ProductController@getattr')->name('product.getattr');
 });
 Auth::routes();

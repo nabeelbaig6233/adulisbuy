@@ -18,16 +18,20 @@ class admin
     {
         if (!empty(Auth::user()->id)) {
             $id = Auth::user()->id;
-            $role = \DB::table('roles')->select('roles.name')->whereIn('roles.id',function ($query) use ($id) {
+            $role = \DB::table('roles')->select('roles.name','roles.permission')->whereIn('roles.id',function ($query) use ($id) {
                 $query->select('users.role_id')->from('users')->where('users.id',$id);
-            })->first()->name;
+            })->first();
+            $permissions = json_decode($role->permission);
         }
         if (!Auth::check()) {
             return redirect('login');
         }
-        elseif (Auth::check() === true && $role != "admin") {
+        elseif (Auth::check() === true && $role->name == "customer") {
             return redirect('/');
         }
+        view()->share([
+            'permissions' => $permissions
+        ]);
         return $next($request);
     }
 }

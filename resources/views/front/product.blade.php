@@ -194,13 +194,22 @@
                                         <div class="product-description border-product">
                                             <h6 class="product-title size-text">select size </h6>
 
-                                            <div class="size-box">
-                                                <ul>
-                                                    <li class="active"><a href="#">s</a></li>
-                                                    <li><a href="#">m</a></li>
-                                                    <li><a href="#">l</a></li>
-                                                    <li><a href="#">xl</a></li>
-                                                </ul>
+                                            <div class="size-box select-size">
+                                                <div class="form-group">
+                                                  <select class="form-control">
+                                                    <option value="" selected disabled>Please select</option>
+                                                    <option>M</option>
+                                                    <option>S</option>
+                                                    <option>L</option>
+                                                    <option>XL</option>
+                                                  </select>
+                                                </div>
+                                                <!--<ul>-->
+                                                <!--    <li class="active"><a href="#">s</a></li>-->
+                                                <!--    <li><a href="#">m</a></li>-->
+                                                <!--    <li><a href="#">l</a></li>-->
+                                                <!--    <li><a href="#">xl</a></li>-->
+                                                <!--</ul>-->
                                             </div>
 
                                             <span><a href="#" data-toggle="modal" data-target="#sizemodal">size chart</a></span>

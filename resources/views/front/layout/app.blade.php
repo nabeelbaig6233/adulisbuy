@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
     <title>Adulisbuy</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +30,91 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/front/css/color1.css')}}" media="screen" id="color">
     <!-- Style css -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+    
+    <style>
+        .shop-subcat {
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    color: #777 !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    padding-left: 20px;
+}
+
+
+ .shop-subcat::after {
+     content: unset !important;
+ }
+ 
+ 
+.shop-cat .collection-collapse-block-content ul {
+    margin: 6px 0 10px 0;
+    padding: 0;
+    border: none;
+}
+
+.shop-cat .collection-collapse-block-content ul li {
+    position: relative;
+    left: 35px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: underline;
+    color: #000 !important;
+}
+
+.shop-cat .collection-collapse-block-content ul li > a{
+    text-decoration: underline;
+    color: #000 !important;
+}
+
+
+.price-prices ul {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+
+.price-prices ul > li {
+    margin: 4px 0;
+    padding: 0;
+    border: none;
+}
+
+
+.collection-brand-filter.shop-cat {
+    margin: 12px 0;
+}
+
+
+.price-prices ul > li a{
+    cursor: pointer !important;
+    color: #777 !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    padding-left: 20px;
+}
+.price-prices ul > li a:hover{
+    text-decoration: underline !important;
+}
+
+.select-size select{
+width: 40%;
+    border-radius: 0px;
+    /* border-top: none; */
+    /* border-left: none; */
+    /* border-right: none; */
+    background: transparent;
+}
+.select-size select:focus{
+    box-shadow: none !important;
+    border-color: none !important;
+    background-color: transparent !important;
+}
+
+
+    </style>
 
 </head>
 <body class="bg-light ">

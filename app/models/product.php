@@ -8,4 +8,9 @@ class product extends Model
 {
     protected $table = 'product';
     public $timestamps = TRUE;
+
+    public function scopeMightAlsoLike($query)
+    {
+        return $query->inRandomOrder()->take(10);
+    }
 }

@@ -15,10 +15,18 @@ class allowguest
      */
     public function handle($request, Closure $next)
     {
+//        \Session::flush();
         if (!\Session()->has('languageId')) {
-            \Session()->put('languageId' , '1');
+            $language = \App\models\language::select('id','name','currency')->where('id',1)->firstOrFail();
+            $lang = [
+                'languageId' => $language->id,
+                'languageName' => $language->name,
+                'languageCurrency' => $language->currency,
+            ];
+            \Session()->put($lang);
         }
         $languageId = \Session()->get('languageId');
+
         $category = \DB::table('category')->select('id','name','image','slug')->where('language_id',$languageId)->get()->toArray();
         $category_id = [];
         foreach ($category as $cat) {

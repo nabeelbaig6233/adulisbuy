@@ -265,6 +265,26 @@ p.terms_text01 {
     border-radius: 0;
     letter-spacing: 0.05em;
 }
+
+.lang-dropdown{
+    background: no-repeat !important;
+    border: none !important;
+    padding: 0 !important;
+    height: unset !important;
+    color: #fff !important;
+    font-family: Raleway,sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    text-transform: capitalize !important;
+}
+.lang-dropdown option{
+    color: grey;
+}
+
+.lang-drop-mar{
+    margin: 0 !important;
+    padding-top: 5px !important;
+}
 @charset "UTF-8";
 
 /*!

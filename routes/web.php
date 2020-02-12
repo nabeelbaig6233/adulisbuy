@@ -80,6 +80,7 @@ Auth::routes();
 
 Route::middleware(['allowguest'])->group(function (){
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('languageId','HomeController@language')->name('language');
     Route::get('/product','ProductController@index')->name('product.index');
     Route::get('/shop','ProductController@show')->name('product.show');
 });

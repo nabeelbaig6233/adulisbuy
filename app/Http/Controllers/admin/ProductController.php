@@ -143,6 +143,7 @@ class ProductController extends Controller
     public function getattr($id, $product_id = "")
     {
         $variantId= [];
+        $variantPrice2 = [];
         if (isset($product_id)) {
             $productVariant = \DB::table('product_variant')->select('variant_id','variant_price')->where('product_id',$product_id)->get()->all();
             foreach ($productVariant as $item) {

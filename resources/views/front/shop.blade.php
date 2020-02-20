@@ -35,107 +35,54 @@
                             <div class="collection-collapse-block open">
                                 <h3 class="collapse-block-title mt-0">brand</h3>
                                 <div class="collection-collapse-block-content">
-                                    <div class="collection-brand-filter shop-cat">
-                                        <div class="collection-collapse-block open">
-                                        <a href="javascript:void(0);" class="collapse-block-title mt-0 shop-subcat">brand</a>
+                                    @forelse ($category as $cat)
+                                        <div class="collection-brand-filter shop-cat">
+                                            <div class="collection-collapse-block {{ (($categoryId == $cat->id) ? 'open': '')}}">
+                                                <a href="javascript:void(0);" class="collapse-block-title mt-0 shop-subcat">{{$cat->name}}</a>
+                                                <div class="collection-collapse-block-content" style="display: {{ (($categoryId == $cat->id) ? 'block': 'none')}};">
+                                                    <div class="collection-brand-filter">
+                                                        <ul class="list-group">
+                                                            @foreach($sub_category as $scat)
+                                                                @if ($scat->category_id === $cat->id)
+                                                                    <li class="list-group-item"><a href="{{route('product.index',['category'=>$scat->slug])}}">{{$scat->name}}</a></li>
+                                                                @endif
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @empty
+                                        <p>No Category Found</p>
+                                    @endforelse
+                                </div>
+                            </div>
+
+                            <!-- price filter start here -->
+                            <?php $temp = []; ?>
+                            @if ($variants)
+                                @foreach ($variants as $variant)
+                                    @if (!in_array($variant->aid,$temp))
+                                        @php
+                                            array_push($temp,$variant->aid);
+                                        @endphp
+                                        <div class="collection-collapse-block border-0 open price-prices">
+                                            <h3 class="collapse-block-title">{{$variant->aname ?? ''}}</h3>
                                             <div class="collection-collapse-block-content">
                                                 <div class="collection-brand-filter">
                                                     <ul class="list-group">
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
+                                                        @foreach ($variants as $varis)
+                                                            @if ($varis->aid == $variant->aid)
+                                                                <li class="list-group-item"><a href="{{ route('product.index',['category' => request()->category, 'variant' => $varis->vid]) }}">{{$varis->vname}}</a></li>
+                                                            @endif
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="collection-brand-filter shop-cat">
-                                        <div class="collection-collapse-block">
-                                        <a href="javascript:void(0);" class="collapse-block-title mt-0 shop-subcat">brand</a>
-                                            <div class="collection-collapse-block-content" style="display: none;">
-                                                <div class="collection-brand-filter">
-                                                    <ul class="list-group">
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="collection-brand-filter shop-cat">
-                                        <div class="collection-collapse-block">
-                                        <a href="javascript:void(0);" class="collapse-block-title mt-0 shop-subcat">brand</a>
-                                            <div class="collection-collapse-block-content" style="display: none;">
-                                                <div class="collection-brand-filter">
-                                                    <ul class="list-group">
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                      <li class="list-group-item"><a href="javascript:void(0);">zara</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- color filter start here -->
-                            <div class="collection-collapse-block open">
-                                <h3 class="collapse-block-title">colors</h3>
-                                <div class="collection-collapse-block-content">
-                                    <div class="color-selector">
-                                        <ul>
-                                            <li class="color-1 active"></li>
-                                            <li class="color-2"></li>
-                                            <li class="color-3"></li>
-                                            <li class="color-4"></li>
-                                            <li class="color-5"></li>
-                                            <li class="color-6"></li>
-                                            <li class="color-7"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- price filter start here -->
-                            <div class="collection-collapse-block border-0 open price-prices">
-                                <h3 class="collapse-block-title">price</h3>
-                                <div class="collection-collapse-block-content">
-                                    <div class="collection-brand-filter">
-                                        <ul class="list-group">
-                                          <li class="list-group-item"><a href="javascript:void(0);">$10 - $100</a></li>
-                                          <li class="list-group-item"><a href="javascript:void(0);">$10 - $100</a></li>
-                                          <li class="list-group-item"><a href="javascript:void(0);">$10 - $100</a></li>
-                                          <li class="list-group-item"><a href="javascript:void(0);">$10 - $100</a></li>
-                                        </ul>
-                                        <!--<div class="custom-control custom-checkbox collection-filter-checkbox">-->
-                                        <!--    <input type="checkbox" class="custom-control-input" id="hundred">-->
-                                        <!--    <label class="custom-control-label" for="hundred">$10 - $100</label>-->
-                                        <!--</div>-->
-                                        <!--<div class="custom-control custom-checkbox collection-filter-checkbox">-->
-                                        <!--    <input type="checkbox" class="custom-control-input" id="twohundred">-->
-                                        <!--    <label class="custom-control-label" for="twohundred">$100 - $200</label>-->
-                                        <!--</div>-->
-                                        <!--<div class="custom-control custom-checkbox collection-filter-checkbox">-->
-                                        <!--    <input type="checkbox" class="custom-control-input" id="threehundred">-->
-                                        <!--    <label class="custom-control-label" for="threehundred">$200 - $300</label>-->
-                                        <!--</div>-->
-                                        <!--<div class="custom-control custom-checkbox collection-filter-checkbox">-->
-                                        <!--    <input type="checkbox" class="custom-control-input" id="fourhundred">-->
-                                        <!--    <label class="custom-control-label" for="fourhundred">$300 - $400</label>-->
-                                        <!--</div>-->
-                                        <!--<div class="custom-control custom-checkbox collection-filter-checkbox">-->
-                                        <!--    <input type="checkbox" class="custom-control-input" id="fourhundredabove">-->
-                                        <!--    <label class="custom-control-label" for="fourhundredabove">$400 above</label>-->
-                                        <!--</div>-->
-                                    </div>
-                                </div>
-                            </div>
+                                    @endif
+                                @endforeach
+                            @endif
                         </div>
                         <!-- silde-bar colleps block end here -->
                         <!-- side-bar single product slider start -->
@@ -211,7 +158,7 @@
                                                 <div class="col-12">
                                                     <div class="product-filter-content">
                                                         <div class="search-count">
-                                                            <h5>Showing Products 1-24 of 10 Result</h5></div>
+                                                            <h5>Showing Products {{$products->firstItem()}} to {{$products->lastItem()}} of {{$products->total()}}</h5></div>
                                                         <div class="collection-view">
                                                             <ul>
                                                                 <li><i class="fa fa-th grid-layout-view"></i></li>
@@ -260,25 +207,45 @@
                                                                             <div class="col-lg-6 rtl-text">
                                                                                 <div class="product-right">
                                                                                     <h2>{{$product->name}}</h2>
-                                                                                    <del>{{$price_dis}}</del><h3>{{$price_reg}}</h3>
-                                                                                    <ul class="color-variant">
-                                                                                        <li class="bg-light0"></li>
-                                                                                        <li class="bg-light1"></li>
-                                                                                        <li class="bg-light2"></li>
-                                                                                    </ul>
+                                                                                    <div id="atrrVar">
+                                                                                        <h4>
+                                                                                            <del>{{$price_dis}}</del>
+                                                                                        </h4>
+                                                                                        <h3>{{$price_reg}}</h3>
+                                                                                    </div>
+                                                                                    <?php $temp = [];
+                                                                                    $pro = new App\models\product;
+                                                                                    $productVariants = $pro->getVariant($product->slug);
+                                                                                    ?>
+                                                                                    @if ($productVariants)
+                                                                                        @foreach ($productVariants as $variant)
+                                                                                            @php
+                                                                                                if (!in_array($variant->aid,$temp)):
+                                                                                                    array_push($temp,$variant->aid);
+                                                                                            @endphp
+                                                                                            <h6 class="product-title size-text">{{$variant->aname}}</h6>
+                                                                                            <div class="size-box select-size">
+                                                                                                <div class="form-group">
+                                                                                                    <select class="form-control attrVar" data-id="{{ $product->id}}" name="variant[{{$variant->aid}}]">
+                                                                                                        <option value="" selected disabled>Please select</option>
+                                                                                                        @foreach ($productVariants as $vari)
+                                                                                                            @if ($vari->aid == $variant->aid)
+                                                                                                                <option value="{{$vari->vid}}">{{$vari->vname. (!empty($vari->variant_price) ? ' - (' . (\Session()->get('languageCurrency'). ' ' .$vari->variant_price) : '') }})</option>
+                                                                                                            @endif
+                                                                                                        @endforeach
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            @php
+                                                                                                endif;
+                                                                                            @endphp
+                                                                                        @endforeach
+                                                                                    @endif
                                                                                     <div class="border-product">
                                                                                         <h6 class="product-title">product details</h6>
                                                                                         {!! $product->short_description !!}
                                                                                     </div>
                                                                                     <div class="product-description border-product">
-                                                                                        <div class="size-box">
-                                                                                            <ul>
-                                                                                                <li class="active"><a href="#">s</a></li>
-                                                                                                <li><a href="#">m</a></li>
-                                                                                                <li><a href="#">l</a></li>
-                                                                                                <li><a href="#">xl</a></li>
-                                                                                            </ul>
-                                                                                        </div>
                                                                                         <h6 class="product-title">quantity</h6>
                                                                                         <div class="qty-box">
                                                                                             <div class="input-group"><span class="input-group-prepend"><button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="ti-angle-left"></i></button> </span>
@@ -356,19 +323,11 @@
                                             <div class="theme-paggination-block">
                                                 <div class="row">
                                                     <div class="col-xl-6 col-md-6 col-sm-12">
-                                                        <nav aria-label="Page navigation">
-                                                            <ul class="pagination">
-                                                                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span> <span class="sr-only">Previous</span></a></li>
-                                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span> <span class="sr-only">Next</span></a></li>
-                                                            </ul>
-                                                        </nav>
+                                                        {{$products->appends(request()->input())->links()}}
                                                     </div>
                                                     <div class="col-xl-6 col-md-6 col-sm-12">
                                                         <div class="product-search-count-bottom">
-                                                            <h5>Showing Products 1-24 of 10 Result</h5></div>
+                                                            <h5>Showing Products {{$products->firstItem()}} to {{$products->lastItem()}} of {{$products->total()}}</h5></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -383,6 +342,20 @@
         </div>
     </section>
     <!-- section End -->
-
     <!--contact banner end-->
+@endsection
+@section('page_js')
+    <script>
+        (function(){
+            let currency = "{{\Session()->get('languageCurrency')}}";
+            const attrVar = document.querySelectorAll('.attrVar');
+            Array.from(attrVar).forEach(function (e){
+                e.addEventListener('change',function () {
+                    let option = this.options[this.selectedIndex].text.split("- (");
+                    let price = option[1].replace(/[^.0-9]/gi, '');
+                    document.getElementById('atrrVar').innerHTML = `<h3>${currency} ${price}</h3>`;
+                })
+            })
+        })();
+    </script>
 @endsection

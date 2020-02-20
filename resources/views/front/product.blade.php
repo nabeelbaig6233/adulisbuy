@@ -182,35 +182,38 @@
                                 <div class="col-lg-7 rtl-text">
                                     <div class="product-right">
                                         <h2>{{ $product->name ?? ''}}</h2>
+                                        <div id="atrrVar">
                                         <h4>
                                             <del>{{$price_dis}}</del>
                                         </h4>
                                         <h3>{{$price_reg}}</h3>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
+                                        </div>
                                         <div class="product-description border-product">
-                                            <h6 class="product-title size-text">select size </h6>
-
-                                            <div class="size-box select-size">
-                                                <div class="form-group">
-                                                  <select class="form-control">
-                                                    <option value="" selected disabled>Please select</option>
-                                                    <option>M</option>
-                                                    <option>S</option>
-                                                    <option>L</option>
-                                                    <option>XL</option>
-                                                  </select>
-                                                </div>
-                                                <!--<ul>-->
-                                                <!--    <li class="active"><a href="#">s</a></li>-->
-                                                <!--    <li><a href="#">m</a></li>-->
-                                                <!--    <li><a href="#">l</a></li>-->
-                                                <!--    <li><a href="#">xl</a></li>-->
-                                                <!--</ul>-->
-                                            </div>
+                                            <?php $temp = []; ?>
+                                            @if ($variants)
+                                                @foreach ($variants as $variant)
+                                                    @php
+                                                        if (!in_array($variant->aid,$temp)):
+                                                            array_push($temp,$variant->aid);
+                                                    @endphp
+                                                        <h6 class="product-title size-text">{{$variant->aname}}</h6>
+                                                        <div class="size-box select-size">
+                                                            <div class="form-group">
+                                                                <select class="form-control atrrVar" name="variant[{{$variant->aid}}]">
+                                                                    <option value="" selected disabled>Please select</option>
+                                                                    @foreach ($variants as $vari)
+                                                                        @if ($vari->aid == $variant->aid)
+                                                                            <option value="{{$vari->vid}}">{{$vari->vname. (!empty($vari->variant_price) ? ' - (' . (\Session()->get('languageCurrency'). ' ' .$vari->variant_price) : '') }})</option>
+                                                                        @endif
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    @php
+                                                        endif;
+                                                    @endphp
+                                            @endforeach
+                                            @endif
 
                                             <span><a href="#" data-toggle="modal" data-target="#sizemodal">size chart</a></span>
                                             <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -317,22 +320,22 @@
             <div class="row ">
                 <div class="col-12 product">
                     <div class="product-slide no-arrow">
-                    @if ($related)
-                        @foreach($related as $relPro)
-                            <?php
+                        @if ($related)
+                            @foreach($related as $relPro)
+                                <?php
                                 $priceReg = (($relPro->price_dis > 0 && $relPro->price_dis_end >= date("Y-m-d") && $relPro->price_dis_start <= date("Y-m-d") && $relPro->status == true)) ? \Session()->get('languageCurrency') . ' ' . number_format($relPro->price_dis, 2) : \Session()->get('languageCurrency') . ' ' . number_format($relPro->price_reg, 2);
                                 $priceDis = (($relPro->price_dis > 0 && $relPro->price_dis_end >= date("Y-m-d") && $relPro->price_dis_start <= date("Y-m-d") && $relPro->status == true)) ? \Session()->get('languageCurrency') . ' ' . number_format($relPro->price_reg, 2) : '';
-                            ?>
+                                ?>
                                 <div class="product-box">
                                     <div class="product-imgbox">
                                         <div class="product-front">
                                             <a href="{{route('product.show',['product'=>$relPro->slug])}}">
-                                            <img src="{{asset($relPro->image)}}" class="img-fluid" alt="product">
+                                                <img src="{{asset($relPro->image)}}" class="img-fluid" alt="product">
                                             </a>
                                         </div>
                                         <div class="product-back">
                                             <a href="{{route('product.show',['product'=>$relPro->slug])}}">
-                                            <img src="{{asset($relPro->hover_image)}}" class="img-fluid" alt="product">
+                                                <img src="{{asset($relPro->hover_image)}}" class="img-fluid" alt="product">
                                             </a>
                                         </div>
                                     </div>
@@ -383,4 +386,20 @@
     <!-- related products -->
 
     <!--contact banner end-->
+@endsection
+@section('page_js')
+    <script>
+        (function(){
+            let currency = "{{\Session()->get('languageCurrency')}}";
+            const attrVar = document.querySelectorAll('.atrrVar');
+            Array.from(attrVar).forEach(function (element) {
+                element.addEventListener('change',function () {
+                    element.value = '';
+                    let option = this.options[this.selectedIndex].text.split("- (");
+                    let price = option[1].replace(/[^.0-9]/gi, '');
+                    document.getElementById('atrrVar').innerHTML = `<h3>${currency} ${price}</h3>`;
+                })
+            })
+        })();
+    </script>
 @endsection

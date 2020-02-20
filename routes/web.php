@@ -33,6 +33,14 @@ Route::middleware(['admin'])->prefix('admin')->group(function(){
     Route::delete('/language/destroy/{id}','admin\LanguageController@destroy');
     Route::post('/language/delete_all','admin\LanguageController@delete_all')->name('language.delete_all');
 
+    // Role
+    Route::get('/role','admin\RoleController@index')->name('role');
+    Route::any('/role/form/{form}','admin\RoleController@form');
+    Route::any('/role/form/{form}/{id}','admin\RoleController@form');
+    Route::get('/role/view/{id}','admin\RoleController@view');
+    Route::delete('/role/destroy/{id}','admin\RoleController@destroy');
+    Route::post('/role/delete_all','admin\RoleController@delete_all')->name('role.delete_all');
+
     // Category
     Route::get('/category','admin\CategoryController@index')->name('category');
     Route::any('/category/form/{form}','admin\CategoryController@form');
@@ -80,9 +88,11 @@ Auth::routes();
 
 Route::middleware(['allowguest'])->group(function (){
     Route::get('/', 'HomeController@index')->name('home');
-    Route::get('languageId','HomeController@language')->name('language');
+    Route::get('languageId','HomeController@language')->name('languages');
+
     Route::get('/product','ProductController@index')->name('product.index');
     Route::get('/shop','ProductController@show')->name('product.show');
+    Route::get('/product-variant','ProductController@variant');
 });
 
 Route::fallback(function(){

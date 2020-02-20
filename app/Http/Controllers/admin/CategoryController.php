@@ -11,6 +11,9 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        if (!in_array('viewCategory',\Request::get('permission'))) {
+            return redirect('admin');
+        }
         $content['title'] = ucwords(str_replace('-',' ',request()->segment(2)));
         if (request()->ajax()) {
             return datatables()->of(Category::latest()->get())
@@ -28,6 +31,9 @@ class CategoryController extends Controller
 
     public function form(Request $request, $form_choice = "",$id="")
     {
+        if (!in_array('createCategory',\Request::get('permission'))) {
+            return redirect('admin');
+        }
         if ($request->input()) {
 
             if ($request->input('_token')) {

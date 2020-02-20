@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Adulisbuy</title>
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="Adulisbuy">
@@ -15,110 +13,102 @@
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway&amp;display=swap" rel="stylesheet">
-
     <!--icon css-->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <!--Slick slider css-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/front/css/slick.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/front/css/slick-theme.css')}}">
-
     <!--Animate css-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/front/css/animate.css')}}">
-
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/front/css/color1.css')}}" media="screen" id="color">
     <!-- Style css -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-    
+
     <style>
         .shop-subcat {
-    text-transform: uppercase !important;
-    cursor: pointer !important;
-    color: #777 !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.5px !important;
-    padding-left: 20px;
-}
+            text-transform: uppercase !important;
+            cursor: pointer !important;
+            color: #777 !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.5px !important;
+            padding-left: 20px;
+        }
 
 
- .shop-subcat::after {
-     content: unset !important;
- }
- 
- 
-.shop-cat .collection-collapse-block-content ul {
-    margin: 6px 0 10px 0;
-    padding: 0;
-    border: none;
-}
-
-.shop-cat .collection-collapse-block-content ul li {
-    position: relative;
-    left: 35px;
-    border: none;
-    padding: 0;
-    margin: 0;
-    text-decoration: underline;
-    color: #000 !important;
-}
-
-.shop-cat .collection-collapse-block-content ul li > a{
-    text-decoration: underline;
-    color: #000 !important;
-}
+        .shop-subcat::after {
+            content: unset !important;
+        }
 
 
-.price-prices ul {
-    margin: 0;
-    padding: 0;
-    border: none;
-}
+        .shop-cat .collection-collapse-block-content ul {
+            margin: 6px 0 10px 0;
+            padding: 0;
+            border: none;
+        }
+
+        .shop-cat .collection-collapse-block-content ul li {
+            position: relative;
+            left: 35px;
+            border: none;
+            padding: 0;
+            margin: 0;
+            text-decoration: underline;
+            color: #000 !important;
+        }
+
+        .shop-cat .collection-collapse-block-content ul li > a {
+            text-decoration: underline;
+            color: #000 !important;
+        }
 
 
-.price-prices ul > li {
-    margin: 4px 0;
-    padding: 0;
-    border: none;
-}
+        .price-prices ul {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
 
 
-.collection-brand-filter.shop-cat {
-    margin: 12px 0;
-}
+        .price-prices ul > li {
+            margin: 4px 0;
+            padding: 0;
+            border: none;
+        }
+        .collection-brand-filter.shop-cat {
+            margin: 12px 0;
+        }
+        .price-prices ul > li a {
+            cursor: pointer !important;
+            color: #777 !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.5px !important;
+            padding-left: 20px;
+        }
 
+        .price-prices ul > li a:hover {
+            text-decoration: underline !important;
+        }
 
-.price-prices ul > li a{
-    cursor: pointer !important;
-    color: #777 !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.5px !important;
-    padding-left: 20px;
-}
-.price-prices ul > li a:hover{
-    text-decoration: underline !important;
-}
+        .select-size select {
+            width: 40%;
+            border-radius: 0px;
+            /* border-top: none; */
+            /* border-left: none; */
+            /* border-right: none; */
+            background: transparent;
+        }
 
-.select-size select{
-width: 40%;
-    border-radius: 0px;
-    /* border-top: none; */
-    /* border-left: none; */
-    /* border-right: none; */
-    background: transparent;
-}
-.select-size select:focus{
-    box-shadow: none !important;
-    border-color: none !important;
-    background-color: transparent !important;
-}
+        .select-size select:focus {
+            box-shadow: none !important;
+            border-color: none !important;
+            background-color: transparent !important;
+        }
 
 
     </style>
-
 </head>
 <body class="bg-light ">
-
 <header>
     <div class="mobile-fix-option"></div>
     <div class="top-header">
@@ -144,19 +134,19 @@ width: 40%;
                 <div class="col-xl-7 col-md-5 col-sm-6">
                     <div class="top-header-right">
                         <div class="language-block">
-                                <select id="changeLanguage" class="form-control lang-dropdown">
-                                    @if ($language)
-                                        @foreach ($language as $lang)
-                                            <option value="{{$lang->id??''}}" {{(\Session()->get('languageId') == $lang->id)?'selected':''}}>{{$lang->name??''}}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </div>
+                            <select id="changeLanguage" class="form-control lang-dropdown">
+                                @if ($language)
+                                    @foreach ($language as $lang)
+                                        <option value="{{$lang->id??''}}" {{(\Session()->get('languageId') == $lang->id)?'selected':''}}>{{$lang->name??''}}</option>
+                                    @endforeach
+                                @endif
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="layout-header1">
         <div class="container">
@@ -406,11 +396,7 @@ width: 40%;
     </div>
 </header>
 <!--header end-->
-
-
 @yield('content')
-
-
 <!--footer start-->
 <footer>
     <div class="app-link-block">
@@ -483,23 +469,6 @@ width: 40%;
                                         </div>
                                     </div>
                                 </div>
-                                <!--<div class="col-md-12">-->
-                                <!--    <div class="footer-sub-box">-->
-                                <!--        <div class="footer-title">-->
-                                <!--            <h5>quick link</h5>-->
-                                <!--        </div>-->
-                                <!--        <div class="footer-contant">-->
-                                <!--            <ul>-->
-                                <!--                <li><a href="#">store location</a></li>-->
-                                <!--                <li><a href="#"> my account</a></li>-->
-                                <!--                <li><a href="#"> orders tracking</a></li>-->
-                                <!--                <li><a href="#"> size guide</a></li>-->
-                                <!--                <li><a href="#">FAQ </a></li>-->
-                                <!--                <li><a href="#">new products</a></li>-->
-                                <!--            </ul>-->
-                                <!--        </div>-->
-                                <!--    </div>-->
-                                <!--</div>-->
                             </div>
                         </div>
                     </div>
@@ -550,7 +519,6 @@ width: 40%;
     </div>
 </footer>
 <!--footer end-->
-
 <!-- tap to top -->
 <div class="tap-top">
     <div>
@@ -558,7 +526,6 @@ width: 40%;
     </div>
 </div>
 <!-- tap to top End -->
-
 <!-- Add to cart bar -->
 <div id="cart_side" class=" add_to_cart bottom ">
     <a href="javascript:void(0)" class="overlay" onclick="closeCart()"></a>
@@ -647,11 +614,6 @@ width: 40%;
     </div>
 </div>
 <!-- Add to cart bar end-->
-
-
-
-
-
 <!-- My account bar start-->
 <div id="myAccount" class="add_to_cart right account-bar">
     <a href="javascript:void(0)" class="overlay" onclick="closeAccount()"></a>
@@ -684,7 +646,6 @@ width: 40%;
     </div>
 </div>
 <!-- Add to account bar end-->
-
 <!-- Add to wishlist bar -->
 <div id="wishlist_side" class="add_to_cart right">
     <a href="javascript:void(0)" class="overlay" onclick="closeWishlist()"></a>
@@ -782,7 +743,6 @@ width: 40%;
     </div>
 </div>
 <!-- Add to wishlist bar end-->
-
 <!-- add to  setting bar  start-->
 <div id="mySetting" class="add_to_cart right">
     <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
@@ -816,37 +776,29 @@ width: 40%;
 <!-- Add to setting bar end-->
 <script src="{{asset('js/app.js')}}"></script>
 @yield('page_js')
-
 <!-- slick js-->
 <script src="{{asset('assets/front/js/slick.js')}}"></script>
-
 <!-- popper js-->
 <script src="{{asset('assets/front/js/popper.min.js')}}"></script>
-
 <!-- Timer js-->
 <script src="{{asset('assets/front/js/menu.js')}}"></script>
-
-<!-- Bootstrap js-->
-
 <!-- Bootstrap js-->
 <script src="{{asset('assets/front/js/bootstrap-notify.min.js')}}"></script>
-
 <!-- Theme js-->
 <script src="{{asset('assets/front/js/slider-animat-three.js')}}"></script>
 <script src="{{asset('assets/front/js/script.js')}}"></script>
 <script src="{{asset('assets/front/js/modal.js')}}"></script>
-
 <script>
     $(document).ready(function () {
-    //    language ID
+        //    language ID
         let changeLanguage = document.querySelector('#changeLanguage');
-        changeLanguage.addEventListener('change',(e) => {
+        changeLanguage.addEventListener('change', (e) => {
             let languageId = document.getElementById('changeLanguage').value;
             if (languageId) {
                 $.ajax({
-                    url: "{{route('language')}}",
+                    url: "{{route('languages')}}",
                     method: "get",
-                    data: {languageId : languageId},
+                    data: {languageId: languageId},
                     dataType: "json",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -862,5 +814,4 @@ width: 40%;
     })
 </script>
 </body>
-
 </html>

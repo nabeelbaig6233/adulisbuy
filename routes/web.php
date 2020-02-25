@@ -74,7 +74,7 @@ Route::middleware(['admin'])->prefix('admin')->group(function(){
     Route::post('/product/featured','admin\ProductController@featured')->name('featured');
     Route::delete('/product/destroy/{id}','admin\ProductController@destroy');
     Route::post('/product/delete_all','admin\ProductController@delete_all')->name('product.delete_all');
-    Route::get('/product/getattr/{id}','Admin\ProductController@getattr')->name('product.getattr');
+    Route::get('/product/getattr/{id}','admin\ProductController@getattr')->name('product.getattr');
 });
 Auth::routes();
 

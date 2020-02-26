@@ -49,6 +49,14 @@ Route::middleware(['admin'])->prefix('admin')->group(function(){
     Route::delete('/category/destroy/{id}','admin\CategoryController@destroy');
     Route::post('/category/delete_all','admin\CategoryController@delete_all')->name('category.delete_all');
 
+    // dummy
+    Route::get('/dummy','admin\DummyController@index')->name('dummy');
+    Route::any('/dummy/form/{form}','admin\DummyController@form');
+    Route::any('/dummy/form/{form}/{id}','admin\DummyController@form');
+    Route::get('/dummy/view/{id}','admin\DummyController@view');
+    Route::delete('/dummy/destroy/{id}','admin\DummyController@destroy');
+    Route::post('/dummy/delete_all','admin\DummyController@delete_all')->name('dummy.delete_all');
+
     // SubCategory
     Route::get('/sub-category','admin\SubCategoryController@index')->name('sub-category');
     Route::any('/sub-category/form/{form}','admin\SubCategoryController@form');

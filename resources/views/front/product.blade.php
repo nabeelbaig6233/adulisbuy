@@ -394,7 +394,6 @@
             const attrVar = document.querySelectorAll('.atrrVar');
             Array.from(attrVar).forEach(function (element) {
                 element.addEventListener('change',function () {
-                    element.value = '';
                     let option = this.options[this.selectedIndex].text.split("- (");
                     let price = option[1].replace(/[^.0-9]/gi, '');
                     document.getElementById('atrrVar').innerHTML = `<h3>${currency} ${price}</h3>`;

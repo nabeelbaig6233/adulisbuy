@@ -61,11 +61,21 @@
                     <ul class="nav side-menu">
                       <li><a><i class="fa fa-desktop"></i> Inventory <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                          <li><a href="{{route('category')}}">Category</a></li>
-                          <li><a href="{{route('sub-category')}}">Sub Category</a></li>
-                          <li><a href="{{route('attribute')}}">Attribute</a></li>
-                          <li><a href="{{route('variant')}}">Variants</a></li>
-                          <li><a href="{{route('product')}}">Products</a></li>
+                            @if (in_array('viewCategory',\Request::get('permission')))
+                                <li><a href="{{route('category')}}">Category</a></li>
+                            @endif
+                            @if (in_array('viewSubCategory',\Request::get('permission')))
+                                <li><a href="{{route('sub-category')}}">Sub Category</a></li>
+                            @endif
+                            @if (in_array('viewAttribute',\Request::get('permission')))
+                                <li><a href="{{route('attribute')}}">Attribute</a></li>
+                            @endif
+                            @if (in_array('viewVariant',\Request::get('permission')))
+                                <li><a href="{{route('variant')}}">Variants</a></li>
+                            @endif
+                            @if (in_array('viewProduct',\Request::get('permission')))
+                                <li><a href="{{route('product')}}">Products</a></li>
+                            @endif
                         </ul>
                       </li>
                         <li><a><i class="fa fa-bar-chart"></i> Orders <span class="fa fa-chevron-down"></span></a>
@@ -109,8 +119,8 @@
                         <ul class="nav side-menu">
                             <li><a><i class="fa fa-gear"></i> Settings <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{{route('language')}}">Language</a></li>
-                                    <li><a href="page_403.html">Roles</a></li>
+                                    <li><a href="{{route('languages')}}">Language</a></li>
+                                    <li><a href="{{route('role')}}">Roles</a></li>
                                     <li><a href="{{route('users')}}">Users</a></li>
                                     <li><a href="{{route('setting')}}">Settings</a></li>
                                 </ul>

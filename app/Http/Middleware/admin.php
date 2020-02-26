@@ -22,6 +22,7 @@ class admin
                 $query->select('users.role_id')->from('users')->where('users.id',$id);
             })->first();
             $permissions = json_decode($role->permission);
+            $request->attributes->add(['permission' => $permissions]);
         }
         if (!Auth::check()) {
             return redirect('login');

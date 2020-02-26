@@ -49,12 +49,11 @@ class LoginController extends Controller
         }
 //        Check User Roles
         switch ($role) {
-            case 'admin':
-                return '/admin';
-                break;
             case 'customer':
                 return '/dashboard';
                 break;
+            default:
+                return 'admin';
         }
     }
 }

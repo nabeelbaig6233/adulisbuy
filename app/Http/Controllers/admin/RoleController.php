@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\models\language;
+use App\models\role;
 use Illuminate\Http\Request;
 use File;
 
-class LanguageController extends Controller
+class RoleController extends Controller
 {
     public function index()
     {
         $content['title'] = ucwords(str_replace('-',' ',request()->segment(2)));
         if (request()->ajax()) {
-            return datatables()->of(language::latest()->get())
+            return datatables()->of(role::latest()->get())
                 ->addColumn('checkbox',function($data){
                     return '<input type="checkbox" class="delete_checkbox flat" value="'.$data->id.'">';
                 })->addColumn('action',function($data){
@@ -30,19 +30,16 @@ class LanguageController extends Controller
             if ($request->input('_token')) {
                 $request->request->remove('_token');
             }
-            $record = ($form_choice == 'edit') ? Language::find($id) : new Language ;
-
-            foreach ($request->input() as $key => $value) {
-                $record->$key = $value;
-            }
-            $record->created_by = \Auth::user()->id;
+            $record = ($form_choice == 'edit') ? role::find($id) : new role ;
+            $record->name = $request->input('name');
+            $record->permission = !empty($request->input('permission')) ? json_encode($request->input('permission')) : '';
             $record->status = '1';
-
+            $record->created_by = \Auth::user()->id;
             $record->save();
-
             if($form_choice == 'edit'){
                 return redirect('admin/'.request()->segment(2))->with('success','Updated Successfully.');
             }
+
             else if($form_choice == 'add'|| $form_choice == 'duplicate'){
                 return redirect('admin/'.request()->segment(2))->with('success','Added Successfully.');
             }
@@ -50,7 +47,7 @@ class LanguageController extends Controller
         else {
             $view = request()->segment(2).'.form';
             if($form_choice == 'edit' || $form_choice == 'duplicate'){
-                $content['record'] = Language::findOrFail($id);
+                $content['record'] = role::findOrFail($id);
             }
             $content['title'] = ucwords(str_replace('-',' ',request()->segment(2)).' '.$form_choice);
             return view('admin.'.$view)->with($content);
@@ -60,14 +57,14 @@ class LanguageController extends Controller
     public function view($id)
     {
         if (request()->ajax()) {
-            $data = Language::findOrFail($id);
+            $data = role::findOrFail($id);
             return response()->json($data);
         }
     }
 
     public function destroy($id)
     {
-        $data = Language::findOrFail($id);
+        $data = role::findOrFail($id);
         $data->delete();
         echo "Deleted Successfully.";
     }
@@ -77,7 +74,7 @@ class LanguageController extends Controller
         if ($request->input('checkbox_value')) {
             $id = $request->input('checkbox_value');
             for ($i=0; $i < count($id); $i++) {
-                $data = Language::findorFail($id[$i]);
+                $data = role::findorFail($id[$i]);
                 $data->delete();
             }
             echo "Selected records Deleted Successfully.";

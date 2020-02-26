@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2020 at 06:52 PM
+-- Generation Time: Feb 26, 2020 at 07:24 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -151,6 +151,29 @@ INSERT INTO `category_product` (`id`, `product_id`, `category_id`, `created_at`,
 (70, 56, 3, NULL, NULL),
 (71, 55, 2, NULL, NULL),
 (72, 54, 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dummy`
+--
+
+CREATE TABLE `dummy` (
+  `id` int(11) NOT NULL,
+  `image` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `dummy`
+--
+
+INSERT INTO `dummy` (`id`, `image`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(4, NULL, 'sdasdsa', 1, '2020-02-20 20:11:46', '2020-02-20 20:11:46'),
+(5, NULL, 'sadsad', 1, '2020-02-20 20:11:58', '2020-02-20 20:11:58');
 
 -- --------------------------------------------------------
 
@@ -481,7 +504,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `language_id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `contact_number`, `occupation`, `profile_picture`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(1, 1, 1, 'Adulisbuy', 'admin@demo.com', NULL, '$2y$10$dFtCYSQk0saLbkrOywAR2.Ids8QSta1JDfz1y2IYdRrYfdo5PA5d2', 'kmaDzRKAU3ODeUdVgKLPLgrGLo0RME2eKDFBMnuMpaHpIsytmnNxsASudpcP', NULL, NULL, 'assets/admin/images/14354318.png', '2020-01-14 14:45:20', NULL, '2020-01-14 14:45:20', NULL),
+(1, 1, 1, 'Adulisbuy', 'admin@demo.com', NULL, '$2y$10$dFtCYSQk0saLbkrOywAR2.Ids8QSta1JDfz1y2IYdRrYfdo5PA5d2', '39Ypgd1IVxOSaj1lpuWjxMsVrkVy8QrhGXxKgYh823n7sY0z33Sz85Y9ItZb', NULL, NULL, 'assets/admin/images/14354318.png', '2020-01-14 14:45:20', NULL, '2020-01-14 14:45:20', NULL),
 (2, 2, 1, 'Testing Fname Lname', 'nb@nadocrm.com', NULL, '$2y$10$c5fg4t6cmsZrn1J.wQT3JuoaH/ICLtLMk1Y1PvolnNp/7P/MgDque', NULL, NULL, NULL, NULL, '2020-01-16 17:08:00', NULL, '2020-01-16 17:08:00', NULL),
 (3, 0, 1, 'Testing Fname Lname', 'nbs@nadocrm.com', NULL, '$2y$10$5FP3FaUNvZnGIYgtPWAyEuAn950F8DnB6JlqpKAOcuNYaqSG41LHi', NULL, NULL, NULL, NULL, '2020-01-16 17:15:00', NULL, '2020-01-16 17:15:00', NULL),
 (4, 0, 1, 'Testing Fname Lname', 'asnb@nadocrm.com', NULL, '$2y$10$BQ/gj/33RRgxxn9WOlY3PuLU8G.1iSKAcFhnH8nShkd1ANXmRt83K', NULL, NULL, NULL, NULL, '2020-01-16 17:52:49', NULL, '2020-01-16 17:52:49', NULL),
@@ -557,6 +580,12 @@ ALTER TABLE `category_product`
   ADD PRIMARY KEY (`id`),
   ADD KEY `category_product_product_id_foreign` (`product_id`),
   ADD KEY `category_product_category_id_foreign` (`category_id`);
+
+--
+-- Indexes for table `dummy`
+--
+ALTER TABLE `dummy`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -659,6 +688,12 @@ ALTER TABLE `category`
 --
 ALTER TABLE `category_product`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+
+--
+-- AUTO_INCREMENT for table `dummy`
+--
+ALTER TABLE `dummy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

@@ -16,7 +16,7 @@
                             <div class="slider-banner-contain">
                                 <div>
                                     <h4>the best</h4>
-                                    <h1>loffer shoes</h1>
+                                    <h1>loffer shoes hello</h1>
                                     <h2>minimum 30% off</h2>
                                     <a class="btn btn-rounded">
                                         Shop Now

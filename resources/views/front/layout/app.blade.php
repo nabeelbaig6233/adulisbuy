@@ -605,7 +605,7 @@
                 </li>
                 <li>
                     <div class="buttons">
-                        <a href="cart.html" class="btn btn-normal btn-xs view-cart">view cart</a>
+                        <a href="{{ route('cart.all') }}" class="btn btn-normal btn-xs view-cart">view cart</a>
                         <a href="#" class="btn btn-normal btn-xs checkout">checkout</a>
                     </div>
                 </li>
@@ -790,6 +790,9 @@
 <script src="{{asset('assets/front/js/modal.js')}}"></script>
 <script>
     $(document).ready(function () {
+        // Base URL
+        window.BaseURL = '{{ url('/') }}';
+
         //    language ID
         let changeLanguage = document.querySelector('#changeLanguage');
         changeLanguage.addEventListener('change', (e) => {

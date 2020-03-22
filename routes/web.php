@@ -101,6 +101,18 @@ Route::middleware(['allowguest'])->group(function (){
     Route::get('/product','ProductController@index')->name('product.index');
     Route::get('/shop','ProductController@show')->name('product.show');
     Route::get('/product-variant','ProductController@variant');
+
+    // Cart
+    Route::get('cart', 'BagController@getAllProductsFromCart')->name('cart.all');
+    Route::get('cart/{productID}', 'BagController@getProductFromCart')->name('cart.find');
+    Route::post('cart', 'BagController@putProductInCart')->name('cart.put');
+    Route::post('cart/{productID}', 'BagController@updateOrDeleteProductInCart')->name('cart.update.or.delete');
+
+    // WishList
+    Route::get('wishList', 'BagController@getAllProductsFromWishList')->name('wishList.all');
+    Route::get('wishList/{productID}', 'BagController@getProductFromWishList')->name('wishList.find');
+    Route::post('wishList', 'BagController@putProductInWishList')->name('wishList.put');
+    Route::post('wishList/{productID}', 'BagController@updateOrDeleteProductInWishList')->name('wishList.update.or.delete');
 });
 
 Route::fallback(function(){

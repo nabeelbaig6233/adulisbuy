@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2020 at 07:24 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Mar 22, 2020 at 02:23 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,10 +32,10 @@ CREATE TABLE `attribute` (
   `id` int(10) UNSIGNED NOT NULL,
   `language_id` int(11) DEFAULT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -59,10 +59,10 @@ CREATE TABLE `attribute_sub_category` (
   `language_id` int(11) NOT NULL,
   `attribute_id` int(11) NOT NULL,
   `sub_category_id` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -101,7 +101,7 @@ CREATE TABLE `category` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(1) DEFAULT '1',
+  `status` tinyint(1) DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -162,9 +162,9 @@ CREATE TABLE `dummy` (
   `id` int(11) NOT NULL,
   `image` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+  `status` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -187,7 +187,7 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -200,10 +200,10 @@ CREATE TABLE `language` (
   `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `currency` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -267,19 +267,19 @@ CREATE TABLE `product` (
   `sku` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `hover_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `multi_image` text COLLATE utf8mb4_unicode_ci,
-  `short_description` text COLLATE utf8mb4_unicode_ci,
+  `multi_image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `short_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price_reg` int(11) NOT NULL,
   `price_dis` int(11) DEFAULT NULL,
   `price_dis_start` date DEFAULT NULL,
   `price_dis_end` date DEFAULT NULL,
-  `price_status` tinyint(1) NOT NULL DEFAULT '0',
-  `featured` tinyint(1) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `price_status` tinyint(1) NOT NULL DEFAULT 0,
+  `featured` tinyint(1) NOT NULL DEFAULT 0,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -339,7 +339,7 @@ INSERT INTO `product` (`id`, `language_id`, `category_id`, `sub_category_id`, `n
 (54, 1, 13, 26, 'PC2', 'pc2', 'pc11233', 'assets/uploads/product/8.jpg', 'assets/uploads/product/a8.jpg', '[\"assets/uploads/product/1699589728.jpg\",\"assets/uploads/product/1595843216.jpg\"]', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,</p>', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 123, 122, '2020-02-04', '2020-02-29', 1, 1, 1, '2020-02-03 19:28:23', 1, '2020-02-18 19:17:11', NULL),
 (55, 1, 13, 27, 'dsad', 'dsad', 'adsad23424', 'assets/uploads/product/1550528426.jpg', 'assets/uploads/product/1450376423.jpg', '[\"assets\\/uploads\\/product\\/1382962990.jpg\",\"assets\\/uploads\\/product\\/824056016.jpg\"]', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,</p>', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 123, 122, '2020-02-04', '2020-02-29', 1, 0, 1, '2020-02-03 19:30:49', 1, '2020-02-18 18:30:50', NULL),
 (56, 1, 13, 26, 'pc12', 'pc12', 'pc12123', 'assets/uploads/product/1285194232.jpg', 'assets/uploads/product/1528701484.jpg', '[\"assets\\/uploads\\/product\\/1369882632.jpg\",\"assets\\/uploads\\/product\\/946450459.jpg\"]', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,</p>', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 123, 121, '2020-02-05', '2020-02-29', 1, 1, 1, '2020-02-04 17:54:22', 1, '2020-02-18 18:30:50', NULL),
-(57, 1, 13, 26, 'Testing Fname Testing Lname', 'testing-fname-testing-lname', 'samdung11233', 'assets/uploads/product/1697932112.jpg', 'assets/uploads/product/1763926116.jpg', '[\"assets\\/uploads\\/product\\/468732937.jpg\",\"assets\\/uploads\\/product\\/265179932.jpg\"]', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,</p>', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 444, 333, '2020-02-08', '2020-02-29', 1, 1, 1, '2020-02-06 12:24:33', 1, '2020-02-18 18:30:50', NULL),
+(57, 1, 13, 26, 'Testing Fname Testing Lname', 'testing-fname-testing-lname', 'samdung11233', 'assets/uploads/product/1697932112.jpg', 'assets/uploads/product/1763926116.jpg', '[\"assets\\/uploads\\/product\\/468732937.jpg\",\"assets\\/uploads\\/product\\/265179932.jpg\"]', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,</p>', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 444, 333, '2020-02-08', '2020-02-29', 1, 0, 1, '2020-02-06 12:24:33', 1, '2020-03-17 03:40:29', NULL),
 (61, 1, 13, 26, 'Testing Fname Testing Lnameasdsad', 'testing-fname-testing-lnameasdsad', 'samdung11233dssad', 'assets/uploads/product/359675680.jpg', 'assets/uploads/product/2099205110.jpg', '[\"assets\\/uploads\\/product\\/925707175.jpg\",\"assets\\/uploads\\/product\\/2138830522.jpg\"]', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,</p>', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 200, 150, '2020-02-08', '2020-02-29', 1, 1, 1, '2020-02-06 15:26:45', 1, '2020-02-18 18:30:50', NULL),
 (63, 1, 13, 26, 'Testing Fname Testing Lnameasdsad3q', 'testing-fname-testing-lnameasdsad3q', 'samdung11233dssadewqe', 'assets/uploads/product/289226753.jpg', 'assets/uploads/product/1291020544.jpg', '[\"assets\\/uploads\\/product\\/1113942906.jpg\",\"assets\\/uploads\\/product\\/1722321763.jpg\"]', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,</p>', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 123, 111, '2020-02-08', '2020-02-08', 1, 1, 1, '2020-02-06 15:28:43', 1, '2020-02-18 18:30:50', NULL),
 (65, 1, 13, 26, 'Intel PC', 'intel-pc', 'pc1123356', 'assets/uploads/product/1162869546.jpg', 'assets/uploads/product/1887873918.jpg', '[\"assets\\/uploads\\/product\\/964684563.jpg\",\"assets\\/uploads\\/product\\/581434383.jpg\"]', NULL, '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 500, 450, '2020-02-20', '2020-04-04', 1, 1, 1, '2020-02-18 16:10:16', 1, '2020-02-18 16:10:16', NULL);
@@ -352,14 +352,14 @@ INSERT INTO `product` (`id`, `language_id`, `category_id`, `sub_category_id`, `n
 
 CREATE TABLE `product_variant` (
   `id` int(10) UNSIGNED NOT NULL,
-  `language_id` tinyint(1) DEFAULT '0',
+  `language_id` tinyint(1) DEFAULT 0,
   `variant_id` int(10) UNSIGNED NOT NULL,
   `product_id` int(10) UNSIGNED NOT NULL,
   `variant_price` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -385,7 +385,7 @@ CREATE TABLE `roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `permission` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -398,8 +398,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `permission`, `status`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
 (1, 'admin', '[\"createUser\",\"updateUser\",\"viewUser\",\"deleteUser\",\"createRole\",\"updateRole\",\"viewRole\",\"deleteRole\",\"viewCustomer\",\"deleteCustomer\",\"createCategory\",\"updateCategory\",\"viewCategory\",\"deleteCategory\",\"createSubCategory\",\"updateSubCategory\",\"viewSubCategory\",\"deleteSubCategory\",\"createAttribute\",\"updateAttribute\",\"viewAttribute\",\"deleteAttribute\",\"createVariant\",\"updateVariant\",\"viewVariant\",\"deleteVariant\",\"createProduct\",\"updateProduct\",\"viewProduct\",\"deleteProduct\",\"createProductVariant\",\"updateProductVariant\",\"viewProductVariant\",\"deleteProductVariant\",\"createInventory\",\"updateInventory\",\"viewInventory\",\"deleteInventory\",\"createCurrency\",\"updateCurrency\",\"viewCurrency\",\"deleteCurrency\",\"createHome\",\"updateHome\",\"viewHome\",\"deleteHome\",\"createLocation\",\"updateLocation\",\"viewLocation\",\"deleteLocation\",\"updateContent\",\"viewOrder\",\"viewMarket\",\"updateSetting\",\"updateProfile\"]', 1, NULL, 1, '2020-02-13 12:31:13', NULL),
-(2, 'customer', '', 1, NULL, NULL, NULL, NULL),
-(3, 'vendor', '[\"createRole\",\"updateRole\",\"viewRole\",\"deleteRole\",\"createCategory\",\"updateCategory\",\"deleteCategory\"]', 1, NULL, 12, '2020-02-12 22:44:18', NULL);
+(2, 'customer', '', 1, NULL, 1, '2020-03-17 03:37:29', NULL),
+(3, 'vendor', '[\"createRole\",\"updateRole\",\"viewRole\",\"deleteRole\",\"createCategory\",\"updateCategory\",\"deleteCategory\"]', 1, NULL, 1, '2020-03-17 03:37:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -418,12 +418,13 @@ CREATE TABLE `setting` (
   `facebook` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `twitter` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `instagram` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tax` int(11) NOT NULL DEFAULT 0,
   `logo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `favico` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -431,8 +432,8 @@ CREATE TABLE `setting` (
 -- Dumping data for table `setting`
 --
 
-INSERT INTO `setting` (`id`, `language_id`, `title`, `email`, `phone`, `fax`, `address`, `facebook`, `twitter`, `instagram`, `logo`, `favico`, `status`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(1, 0, 'Adulisbuy', 'info@adulisbuy.com', '12345678910', '12345678910', 'street2', 'www.facebook.com', 'www.twitter.com', 'www.instagram.com', 'assets/uploads/setting/381441951.png', 'assets/uploads/setting/1021934602.png', 1, '2020-01-25 00:54:11', 1, '2020-01-24 19:54:11', NULL);
+INSERT INTO `setting` (`id`, `language_id`, `title`, `email`, `phone`, `fax`, `address`, `facebook`, `twitter`, `instagram`, `tax`, `logo`, `favico`, `status`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
+(1, 0, 'Adulisbuy', 'info@adulisbuy.com', '12345678910', '12345678910', 'street2', 'www.facebook.com', 'www.twitter.com', 'www.instagram.com', 0, 'assets/uploads/setting/381441951.png', 'assets/uploads/setting/1021934602.png', 1, '2020-03-16 21:28:41', 1, '2020-03-16 21:28:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -446,7 +447,7 @@ CREATE TABLE `sub_category` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `category_id` int(11) NOT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(1) DEFAULT '1',
+  `status` tinyint(1) DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -529,10 +530,10 @@ CREATE TABLE `variant` (
   `attribute_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

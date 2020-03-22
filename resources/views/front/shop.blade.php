@@ -21,7 +21,6 @@
     </div>
     <!-- breadcrumb End -->
 
-
     <!-- section start -->
     <section class="section-big-pt-space ratio_asos bg-light">
         <div class="collection-wrapper">
@@ -59,7 +58,7 @@
                             </div>
 
                             <!-- price filter start here -->
-                            <?php $temp = []; ?>
+                            @php $temp = []; @endphp
                             @if ($variants)
                                 @foreach ($variants as $variant)
                                     @if (!in_array($variant->aid,$temp))
@@ -186,13 +185,13 @@
                                             </div>
                                         </div>
                                         <div class="product-wrapper-grid">
-                                            <div class="row">
+                                            <div class="row" id="shopView">
                                             @if ($products)
                                                 @forelse ($products as $product)
-                                                    <?php
-                                                    $price_reg = (($product->price_dis > 0 && $product->price_dis_end >= date("Y-m-d") && $product->price_dis_start <= date("Y-m-d") && $product->status == true)) ? \Session()->get('languageCurrency') . ' ' . number_format($product->price_dis, 2) : \Session()->get('languageCurrency') . ' ' . number_format($product->price_reg, 2);
-                                                    $price_dis = (($product->price_dis > 0 && $product->price_dis_end >= date("Y-m-d") && $product->price_dis_start <= date("Y-m-d") && $product->status == true)) ? \Session()->get('languageCurrency') . ' ' . number_format($product->price_reg, 2) : '';
-                                                    ?>
+                                                    @php
+                                                        $price_reg = (($product->price_dis > 0 && $product->price_dis_end >= date('Y-m-d') && $product->price_dis_start <= date('Y-m-d') && $product->status === true)) ? session()->get('languageCurrency') . ' ' . number_format($product->price_dis, 2) : session()->get('languageCurrency') . ' ' . number_format($product->price_reg, 2);
+                                                        $price_dis = (($product->price_dis > 0 && $product->price_dis_end >= date('Y-m-d') && $product->price_dis_start <= date('Y-m-d') && $product->status === true)) ? session()->get('languageCurrency') . ' ' . number_format($product->price_reg, 2) : '';
+                                                    @endphp
 
                                                     <!-- Quick-view modal popup start-->
                                                         <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view{{$product->id}}" tabindex="-1" role="dialog" aria-hidden="true">
@@ -213,10 +212,10 @@
                                                                                         </h4>
                                                                                         <h3>{{$price_reg}}</h3>
                                                                                     </div>
-                                                                                    <?php $temp = [];
-                                                                                    $pro = new App\models\product;
-                                                                                    $productVariants = $pro->getVariant($product->slug);
-                                                                                    ?>
+                                                                                    @php $temp = [];
+                                                                                        $pro = new App\models\product;
+                                                                                        $productVariants = $pro->getVariant($product->slug);
+                                                                                    @endphp
                                                                                     @if ($productVariants)
                                                                                         @foreach ($productVariants as $variant)
                                                                                             @php
@@ -237,7 +236,7 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                             @php
-                                                                                                endif;
+                                                                                                endif
                                                                                             @endphp
                                                                                         @endforeach
                                                                                     @endif
@@ -252,7 +251,10 @@
                                                                                                 <input type="text" name="quantity" class="form-control input-number" value="1"> <span class="input-group-prepend"><button type="button" class="btn quantity-right-plus" data-type="plus" data-field=""><i class="ti-angle-right"></i></button></span></div>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="product-buttons"><a href="#" class="btn btn-normal">add to cart</a> <a href="#" class="btn btn-normal">view detail</a></div>
+                                                                                    <div class="product-buttons">
+                                                                                        <a href="#" class="btn btn-normal">add to cart</a>
+                                                                                        <a href="#" class="btn btn-normal">view detail</a>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -298,15 +300,15 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="icon-detail">
-                                                                            <button data-toggle="modal" data-target="#addtocart" title="Add to cart">
+                                                                            <button type="button" data-toggle="modal" data-product-id="{{ $product->id }}" data-target="#addtocart" id="addToCart" title="Add to cart">
                                                                                 <i class="fa fa-shopping-bag"></i>
                                                                             </button>
-                                                                            <a href="javascript:void(0)" title="Add to Wishlist">
+                                                                            <button title="Add to Wishlist">
                                                                                 <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                            </a>
-                                                                            <a href="#" data-toggle="modal" data-target="#quick-view{{$product->id}}" title="Quick View">
+                                                                            </button>
+                                                                            <button data-toggle="modal" data-target="#quick-view{{$product->id}}" title="Quick View">
                                                                                 <i class="fa fa-search" aria-hidden="true"></i>
-                                                                            </a>
+                                                                            </button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -342,12 +344,22 @@
         </div>
     </section>
     <!-- section End -->
+
     <!--contact banner end-->
 @endsection
 @section('page_js')
+    <script src="{{ asset('js/custom_page_js/ajax.js') }}"></script>
+    <script src="{{ asset('js/custom_page_js/cart.js') }}"></script>
+    <script>
+        Array.from(document.querySelectorAll('#addToCart')).forEach(button => {
+            button.addEventListener('click', () => {
+
+            });
+        });
+    </script>
     <script>
         (function(){
-            let currency = "{{\Session()->get('languageCurrency')}}";
+            let currency = "{{session()->get('languageCurrency')}}";
             const attrVar = document.querySelectorAll('.attrVar');
             Array.from(attrVar).forEach(function (e){
                 e.addEventListener('change',function () {
